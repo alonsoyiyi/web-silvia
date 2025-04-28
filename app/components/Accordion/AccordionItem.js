@@ -118,8 +118,7 @@ export default function AccordionItem({
             flexDirection: 'column',
             alignItems: 'center',
             width: mobileProps ? '90%' : 'auto',
-            paddingBottom: mobileProps ? '2rem' : '0', // Añadimos padding inferior solo en móvil
-            marginBottom: mobileProps ? '1.5rem' : '0'  // Añadimos margen inferior solo en móvil
+           
           }}
         >
           <p>{content}</p>
