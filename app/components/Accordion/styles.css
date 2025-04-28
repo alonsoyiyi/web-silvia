@@ -1,0 +1,125 @@
+/* Añadir al inicio del archivo */
+.main-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  
+  .header {
+    height: 15vh;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .header h1 {
+    color: white;
+    margin: 0;
+    font-size: 2.5rem;
+  }
+.accordion-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  overflow: hidden;
+}
+
+.accordion-section {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  height: 85vh;
+  transition: flex 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.5); /* Añadimos un fondo semi-transparente */
+}
+
+.accordion-section:hover {
+  flex: 3;
+}
+
+.section-title {
+  position: absolute;
+  left: 35%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(90deg);
+  transform-origin: center;
+  white-space: nowrap;
+  z-index: 1;
+  color: white;
+  font-size: 2rem;
+  pointer-events: none;
+  text-align: center;
+  width: auto;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: min-content;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+              top 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.accordion-section:hover .section-title {
+  top: 15%;
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
+.section-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  max-width: 500px;
+  text-align: center;
+  padding: 2rem;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 8px;
+  z-index: 10;
+  pointer-events: none;
+  will-change: opacity, transform;
+}
+
+/* Removemos los estilos hover del CSS ya que ahora lo manejamos con Framer Motion */
+
+.section-button {
+  margin: 1.5rem auto 0;
+  padding: 0.8rem 2rem;
+  min-width: 150px;
+  background: black;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 11; /* Aseguramos que el botón esté por encima */
+}
+
+/* Aseguramos que la imagen de fondo tenga el z-index correcto */
+.accordion-section img {
+  z-index: 1 !important;
+}
+.section-button-wrapper {
+    text-decoration: none;
+    z-index: 20;
+    pointer-events: auto;
+  }
+  
+  .section-content {
+    pointer-events: all !important;
+    z-index: 20;
+  }
