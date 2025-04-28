@@ -77,7 +77,7 @@ export default function AccordionItem({
       // Lógica Móvil
       onClick={mobileProps ? mobileProps.onToggle : undefined}
       animate={mobileProps ? {
-        height: mobileProps.isActive ? '100vh' : '10vh'
+        height: mobileProps.isActive ? '100vh' : '10vh' // 1. Aumentamos altura al expandir
       } : undefined}
       transition={{ duration: 0.5 }}
     >
@@ -93,10 +93,10 @@ export default function AccordionItem({
         className="section-title"
         initial={{ 
           top: '50%',
-          rotate: mobileProps ? 0 : 90 // No rotar en móvil
+          rotate: mobileProps ? 0 : 90
         }}
         animate={mobileProps ? {
-          top: mobileProps.isActive ? '15%' : '50%'
+          top: mobileProps.isActive ? '12%' : '50%' // 2. Título más arriba cuando está activo
         } : titleControls}
       >
         {title}
@@ -111,12 +111,13 @@ export default function AccordionItem({
           transition={{ duration: 0.7 }}
           style={{ 
             position: 'absolute',
-            top: '50%',
+            top: '60%',
             left: '50%',
             transform: 'translate(-50%, -50%)',
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center'
+            alignItems: 'center',
+            width: mobileProps ? '90%' : 'auto'
           }}
         >
           <p>{content}</p>
