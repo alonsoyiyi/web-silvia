@@ -77,7 +77,7 @@ export default function AccordionItem({
       // Lógica Móvil
       onClick={mobileProps ? mobileProps.onToggle : undefined}
       animate={mobileProps ? {
-        height: mobileProps.isActive ? '65vh' : '10vh'
+        height: mobileProps.isActive ? '100vh' : '10vh'
       } : undefined}
       transition={{ duration: 0.5 }}
     >
