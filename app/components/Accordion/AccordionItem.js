@@ -53,12 +53,18 @@ export default function AccordionItem({ title, content, link, bgImage }) {
   return (
     <motion.div
       className="accordion-section"
-      onHoverStart={handleHover}
-      onHoverEnd={handleHoverEnd}
-      whileHover={isMobile ? { height: '40vh' } : { flex: 3 }}
+      onHoverStart={!isMobile ? handleHover : undefined}
+      onHoverEnd={!isMobile ? handleHoverEnd : undefined}
+      onClick={isMobile ? () => setIsFullyExpanded(!isFullyExpanded) : undefined}
+      whileHover={!isMobile ? { flex: 3 } : undefined}
+      animate={isMobile ? {
+        height: isFullyExpanded ? '40vh' : '10vh'
+      } : undefined}
       transition={{ duration: 0.5 }}
       onUpdate={(latest) => {
-        setIsFullyExpanded(isMobile ? latest.height === '40vh' : latest.flex === 3);
+        if (!isMobile) {
+          setIsFullyExpanded(latest.flex === 3);
+        }
       }}
     >
       <Image

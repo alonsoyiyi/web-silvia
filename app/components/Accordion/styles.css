@@ -126,36 +126,35 @@
 
   /* Media query para móviles */
 @media (max-width: 768px) {
-    .accordion-container {
-      flex-direction: column; /* Cambia la dirección a vertical */
-    }
-  
-    .accordion-section {
-      width: 100%;
-      height: 10vh; /* Altura inicial más pequeña */
-      transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-  
-    .accordion-section:hover {
-      flex: initial; /* Removemos flex para móvil */
-      height: 40vh; /* Altura expandida en móvil */
-    }
-  
-    .section-title {
-      transform: translate(-50%, -50%) rotate(0deg); /* Sin rotación en móvil */
-      left: 50%; /* Centrado horizontal */
-    }
-  
-    .accordion-section:hover .section-title {
-      top: 10%; /* Ajustamos la posición superior */
-      transform: translate(-50%, -50%) rotate(0deg);
-    }
-  
-    .section-content {
-      width: 90%; /* Contenido más ancho en móvil */
-      padding: 1rem;
-    }
+  .accordion-container {
+    flex-direction: column;
+    height: 85vh;
   }
+
+  .accordion-section {
+    position: relative; /* Cambiamos de absolute a relative */
+    width: 100%;
+    height: 10vh;
+    min-height: 10vh; /* Aseguramos altura mínima */
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .accordion-section:hover {
+    height: 40vh;
+  }
+
+  .section-title {
+    transform: translate(-50%, -50%) rotate(0deg);
+    text-align: center;
+    width: auto;
+  }
+
+  .section-content {
+    width: 90%;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+}
   
   /* Ajustes adicionales para pantallas muy pequeñas */
   @media (max-width: 480px) {
