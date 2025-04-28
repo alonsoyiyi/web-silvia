@@ -7,6 +7,18 @@ export default function AccordionItem({ title, content, link, bgImage }) {
   const titleControls = useAnimation();
   const [isFullyExpanded, setIsFullyExpanded] = useState(false);
   const [showContent, setShowContent] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detectar si es dispositivo móvil
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // Efecto para manejar el timer del contenido
   useEffect(() => {
@@ -14,7 +26,7 @@ export default function AccordionItem({ title, content, link, bgImage }) {
     if (isFullyExpanded) {
       timer = setTimeout(() => {
         setShowContent(true);
-      }, 500); // Esperamos 500ms después de que isFullyExpanded sea true
+      }, 400); // Esperamos 400ms después de que isFullyExpanded sea true
     } else {
       setShowContent(false); // Ocultamos inmediatamente cuando isFullyExpanded es false
     }
@@ -43,10 +55,10 @@ export default function AccordionItem({ title, content, link, bgImage }) {
       className="accordion-section"
       onHoverStart={handleHover}
       onHoverEnd={handleHoverEnd}
-      whileHover={{ flex: 3 }}
+      whileHover={isMobile ? { height: '40vh' } : { flex: 3 }}
       transition={{ duration: 0.5 }}
       onUpdate={(latest) => {
-        setIsFullyExpanded(latest.flex === 3);
+        setIsFullyExpanded(isMobile ? latest.height === '40vh' : latest.flex === 3);
       }}
     >
       <Image
