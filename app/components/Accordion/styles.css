@@ -128,31 +128,24 @@
 @media (max-width: 768px) {
   .accordion-container {
     flex-direction: column;
-    height: 85vh;
   }
 
   .accordion-section {
-    position: relative; /* Cambiamos de absolute a relative */
     width: 100%;
-    height: 10vh;
-    min-height: 10vh; /* Aseguramos altura mínima */
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .accordion-section:hover {
-    height: 40vh;
+    min-height: 10vh;
   }
 
   .section-title {
-    transform: translate(-50%, -50%) rotate(0deg);
+    transform: translate(-50%, -50%) rotate(0deg) !important; /* Forzar horizontal en móvil */
     text-align: center;
     width: auto;
+    padding: 1rem;
+    font-size: 1.5rem; /* Ajustar tamaño para móvil */
   }
 
-  .section-content {
-    width: 90%;
-    padding: 1rem;
-    background-color: rgba(0, 0, 0, 0.7);
+  /* Quitar la rotación en hover para móvil */
+  .accordion-section:hover .section-title {
+    transform: translate(-50%, -50%) rotate(0deg) !important;
   }
 }
   

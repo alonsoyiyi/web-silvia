@@ -1,4 +1,5 @@
 'use client';
+import { useState, useEffect } from 'react';
 import AccordionItem from './AccordionItem';
 
 const accordionData = [
@@ -47,12 +48,34 @@ const accordionData = [
 ];
 
 export default function Accordion() {
+  const [activeIndex, setActiveIndex] = useState(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const handleMobileToggle = (index) => {
+    if (isMobile) {
+      setActiveIndex(activeIndex === index ? null : index);
+    }
+  };
+
   return (
     <div className="accordion-container">
       {accordionData.map((item, index) => (
         <AccordionItem
           key={index}
           {...item}
+          mobileProps={isMobile ? {
+            isActive: activeIndex === index,
+            onToggle: () => handleMobileToggle(index)
+          } : null}
         />
       ))}
     </div>

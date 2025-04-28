@@ -3,69 +3,83 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-export default function AccordionItem({ title, content, link, bgImage }) {
+export default function AccordionItem({ 
+  title, 
+  content, 
+  link, 
+  bgImage,
+  mobileProps 
+}) {
   const titleControls = useAnimation();
   const [isFullyExpanded, setIsFullyExpanded] = useState(false);
   const [showContent, setShowContent] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
 
-  // Detectar si es dispositivo móvil
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
-  // Efecto para manejar el timer del contenido
+  // Efecto original para PC
   useEffect(() => {
     let timer;
     if (isFullyExpanded) {
       timer = setTimeout(() => {
         setShowContent(true);
-      }, 400); // Esperamos 400ms después de que isFullyExpanded sea true
+      }, 400);
     } else {
-      setShowContent(false); // Ocultamos inmediatamente cuando isFullyExpanded es false
+      setShowContent(false);
     }
     return () => clearTimeout(timer);
   }, [isFullyExpanded]);
 
+  // Nuevo efecto para móvil
+  useEffect(() => {
+    if (mobileProps) {
+      let timer;
+      if (mobileProps.isActive) {
+        timer = setTimeout(() => {
+          setShowContent(true);
+        }, 400);
+      } else {
+        setShowContent(false);
+      }
+      return () => clearTimeout(timer);
+    }
+  }, [mobileProps?.isActive]);
+
+  // Original PC handlers
   const handleHover = async () => {
-    titleControls.start({
-      top: '15%',
-      rotate: 0,
-      transition: { duration: 0.3, ease: "easeOut" }
-    });
+    if (!mobileProps) {
+      titleControls.start({
+        top: '15%',
+        rotate: 0,
+        transition: { duration: 0.3, ease: "easeOut" }
+      });
+    }
   };
 
   const handleHoverEnd = () => {
-    setIsFullyExpanded(false);
-    titleControls.start({
-      top: '50%',
-      rotate: 90,
-      transition: { duration: 0.3, ease: "easeOut" }
-    });
+    if (!mobileProps) {
+      setIsFullyExpanded(false);
+      titleControls.start({
+        top: '50%',
+        rotate: 90,
+        transition: { duration: 0.3, ease: "easeOut" }
+      });
+    }
   };
 
   return (
     <motion.div
       className="accordion-section"
-      onHoverStart={!isMobile ? handleHover : undefined}
-      onHoverEnd={!isMobile ? handleHoverEnd : undefined}
-      onClick={isMobile ? () => setIsFullyExpanded(!isFullyExpanded) : undefined}
-      whileHover={!isMobile ? { flex: 3 } : undefined}
-      animate={isMobile ? {
-        height: isFullyExpanded ? '40vh' : '10vh'
+      // Lógica PC
+      onHoverStart={!mobileProps ? handleHover : undefined}
+      onHoverEnd={!mobileProps ? handleHoverEnd : undefined}
+      whileHover={!mobileProps ? { flex: 3 } : undefined}
+      onUpdate={!mobileProps ? (latest) => {
+        setIsFullyExpanded(latest.flex === 3);
+      } : undefined}
+      // Lógica Móvil
+      onClick={mobileProps ? mobileProps.onToggle : undefined}
+      animate={mobileProps ? {
+        height: mobileProps.isActive ? '65vh' : '10vh'
       } : undefined}
       transition={{ duration: 0.5 }}
-      onUpdate={(latest) => {
-        if (!isMobile) {
-          setIsFullyExpanded(latest.flex === 3);
-        }
-      }}
     >
       <Image
         src={bgImage}
@@ -77,8 +91,13 @@ export default function AccordionItem({ title, content, link, bgImage }) {
       
       <motion.h2
         className="section-title"
-        initial={{ top: '50%', rotate: 90 }}
-        animate={titleControls}
+        initial={{ 
+          top: '50%',
+          rotate: mobileProps ? 0 : 90 // No rotar en móvil
+        }}
+        animate={mobileProps ? {
+          top: mobileProps.isActive ? '15%' : '50%'
+        } : titleControls}
       >
         {title}
       </motion.h2>
