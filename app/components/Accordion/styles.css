@@ -1,4 +1,3 @@
-/* Añadir al inicio del archivo */
 .main-container {
     width: 100%;
     height: 100vh;
@@ -148,7 +147,14 @@
 
   /* Media query para móviles */
 @media (max-width: 768px) {
+  .main-container {
+    min-height: 100vh;
+    height: auto; /* Permitir que crezca según el contenido */
+    overflow-y: auto; /* Permitir scroll */
+  }
+
   .accordion-container {
+    position: relative; /* Cambiar de absolute a relative */
     flex-direction: column;
     height: auto;
     min-height: 100vh;
@@ -156,9 +162,15 @@
 
   .accordion-section {
     width: 100%;
-    height: auto;
-     
+    min-height: 10vh; /* Altura mínima cuando está cerrado */
+    height: auto; /* Permitir que crezca al expandirse */
   }
+
+  /* Cuando está activo */
+  .accordion-section.active {
+    min-height: 70vh; /* Dar más espacio cuando está abierto */
+  }
+
   .header h1 {
     font-size: 2rem;
   }
