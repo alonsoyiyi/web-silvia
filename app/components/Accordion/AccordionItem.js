@@ -115,27 +115,29 @@ export default function AccordionItem({
           transition={{ duration: 0.7 }}
           style={{ 
             position: 'absolute',
-            top: mobileProps ? '55%' : '60%', 
+            top: mobileProps ? '60%' : '60%', // 45% para móvil, mantenemos 60% para PC
             left: '50%',
             transform: 'translate(-50%, -50%)',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            width: mobileProps ? '90%' : 'auto',
-            width: mobileProps ? '90%' : 'auto',
-      padding: mobileProps ? '2rem' : '0',
-      backgroundColor: 'rgba(0, 0, 0, 0.7)',
-      borderRadius: '8px',
-            
-           
+            width: mobileProps ? '90%' : '85%',
+            padding: mobileProps ? '2rem' : '1rem', // Padding diferente para cada versión
+            backgroundColor: 'rgba(0, 0, 0, 0.7)',
+            borderRadius: '8px',
+            marginBottom: mobileProps ? '2rem' : '0', // Margen solo para móvil
           }}
         >
-          <p>{content}</p>
-          {/* Modificamos esta parte */}
+          <p style={{ 
+            marginBottom: mobileProps ? '0.5rem' : '1rem' // Margen diferente para cada versión
+          }}>{content}</p>
           <Link 
             href={link}
             className="section-button-wrapper"
-            style={{ textDecoration: 'none' }}
+            style={{ 
+              textDecoration: 'none',
+              marginTop: mobileProps ? 'auto' : '0' // Separación solo en móvil
+            }}
           >
             <motion.button
               className="section-button"

@@ -4,44 +4,44 @@ import AccordionItem from './AccordionItem';
 
 const accordionData = [
   {
-    title: "Sección 1",
-    content: "Descripción detallada de la sección de la sección de la sección de la sección de la sección de la sección de la sección de la sección de la sección de la sección de la sección de la sección de la sección 1",
+    title: "Sobre el Proyecto",
+    content: "Adéntrate en nuestro documental y sumérgete en el misterioso mundo de la magia negra y blanca.",
     link: "/view1",
     bgImage: "/images/section1.png"
   },
   {
-    title: "Sección 2",
-    content: "Descripción detallada de la sección de la sección de la sección de la sección de la sección de la sección de la sección de la sección de la sección de la sección de la sección de la sección de la sección 2",
+    title: "Documental",
+    content: "Escucha impactantes historias reales sobre sucesos inexplicables, rituales de limpieza y prácticas ocultas.",
     link: "/view2",
     bgImage: "/images/section2.png"
   },
   {
-    title: "Sección 3",
-    content: "Descripción detallada de la sección de la sección de la sección de la sección de la sección de la sección de la sección de la sección de la sección de la sección de la sección de la sección de la sección 3",
+    title: "Podcast",
+    content: "Descubre los mitos y verdades que envuelven a la magia y comprende mejor una parte fascinante de nuestra cultura.",
     link: "/view3",
     bgImage: "/images/section3.png"
   },
   {
-    title: "Sección 4",
-    content: "Descripción detallada de la sección de la sección de la sección de la sección de la sección de la sección de la sección de la sección de la sección de la sección de la sección de la sección de la sección 4",
+    title: "Blog - Entre Mitos y Verdades",
+    content: "Explora cómo la magia sigue viva en nuestras creencias y cultura.Un viaje entre el misterio y la realidad que revela nuestro patrimonio oculto.",
     link: "/view4",
     bgImage: "/images/section4.png"
   },
   {
-    title: "Sección 5",
-    content: "Descripción detallada de la sección de la sección de la sección de la sección de la sección de la sección de la sección de la sección de la sección de la sección de la sección de la sección de la sección 5",
+    title: "Cómic - El último Conjuro",
+    content: "No te pierdas nuestro cómic interactivo, donde tú serás el protagonista y decidirás cómo termina esta historia mágica.",
     link: "/view5",
     bgImage: "/images/section5.png"
   },
   {
-    title: "Sección 6",
-    content: "Descripción detallada de la sección de la sección de la sección de la sección de la sección de la sección de la sección de la sección de la sección de la sección de la sección de la sección de la sección 6",
+    title: "Video Juego - Bruji Aventuras",
+    content: "¡Diviértete con un juego lleno de hechizos y sorpresas! Embárcate en una brujiaventura donde cada decisión te acercará a lo inesperado.",
     link: "/view6",
     bgImage: "/images/section6.png"
   },
   {
-    title: "Sección 7",
-    content: "Descripción detallada de la sección de la sección de la sección de la sección de la sección de la sección de la sección de la sección de la sección de la sección de la sección de la sección de la sección 7",
+    title: "Conócenos",
+    content: "Somos una productora de jóvenes apasionados que transforma ideas en historias que conectan, inspiran y emocionan. ¡Conócenos!",
     link: "/view7",
     bgImage: "/images/section7.png"
   }
