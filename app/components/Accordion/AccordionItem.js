@@ -115,7 +115,7 @@ export default function AccordionItem({
           transition={{ duration: 0.7 }}
           style={{ 
             position: 'absolute',
-            top: mobileProps ? '50%' : '50%', // 45% para móvil, mantenemos 60% para PC
+            top: mobileProps ? '55%' : '50%', // 45% para móvil, mantenemos 60% para PC
             left: '50%',
             transform: 'translate(-50%, -50%)',
             display: 'flex',
