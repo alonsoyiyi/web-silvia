@@ -115,13 +115,18 @@ export default function AccordionItem({
           transition={{ duration: 0.7 }}
           style={{ 
             position: 'absolute',
-            top: '60%',
+            top: mobileProps ? '55%' : '60%', 
             left: '50%',
             transform: 'translate(-50%, -50%)',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
             width: mobileProps ? '90%' : 'auto',
+            width: mobileProps ? '90%' : 'auto',
+      padding: mobileProps ? '2rem' : '0',
+      backgroundColor: 'rgba(0, 0, 0, 0.7)',
+      borderRadius: '8px',
+            
            
           }}
         >
