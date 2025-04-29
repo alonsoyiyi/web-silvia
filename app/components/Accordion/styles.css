@@ -49,10 +49,9 @@
 
 .section-title {
   position: absolute;
-  left: 35%;
-  top: 50%;
+  left: 5%;
+  top: 0%;
   transform: translate(-50%, -50%) rotate(90deg);
-  transform-origin: center;
   white-space: nowrap;
   z-index: 1;
   color: white;
@@ -69,6 +68,24 @@
               top 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.section-title-sobreelproyecto {
+  transform-origin: 50% 0%;
+}
+.section-title-podcast {
+  transform-origin: 65%;
+}
+.section-title-blog-entremitosyverdades {
+  transform-origin: 40% -50%;
+  left: 0%;
+}
+.section-title-cómic-elúltimoconjuro {
+  transform-origin: 38% 10%;
+  left: 0%;
+}
+.section-title-videojuego-brujiaventuras {
+  transform-origin: 40% -50%;
+  left: 0%;
+}
 .accordion-section:hover .section-title {
   top: 15%;
   transform: translate(-50%, -50%) rotate(0deg);
@@ -144,6 +161,7 @@
     width: auto;
     padding: 1rem;
     font-size: 1.5rem; /* Ajustar tamaño para móvil */
+    left: 50% !important;
   }
 
   /* Quitar la rotación en hover para móvil */

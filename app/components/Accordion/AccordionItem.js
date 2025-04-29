@@ -94,7 +94,7 @@ export default function AccordionItem({
       />
       
       <motion.h2
-        className="section-title"
+        className={`section-title section-title-${title.toLowerCase().replace(/\s+/g, '')}`}
         initial={{ 
           top: '50%',
           rotate: mobileProps ? 0 : 90
@@ -115,7 +115,7 @@ export default function AccordionItem({
           transition={{ duration: 0.7 }}
           style={{ 
             position: 'absolute',
-            top: mobileProps ? '60%' : '60%', // 45% para móvil, mantenemos 60% para PC
+            top: mobileProps ? '50%' : '50%', // 45% para móvil, mantenemos 60% para PC
             left: '50%',
             transform: 'translate(-50%, -50%)',
             display: 'flex',
