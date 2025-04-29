@@ -128,11 +128,14 @@
 @media (max-width: 768px) {
   .accordion-container {
     flex-direction: column;
+    height: auto;
+    min-height: 100vh;
   }
 
   .accordion-section {
     width: 100%;
-    min-height: 10vh;
+    height: auto;
+     
   }
 
   .section-title {

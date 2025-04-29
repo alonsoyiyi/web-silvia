@@ -76,8 +76,12 @@ export default function AccordionItem({
       } : undefined}
       // Lógica Móvil
       onClick={mobileProps ? mobileProps.onToggle : undefined}
+      style={{
+        flex: mobileProps ? (mobileProps.isActive ? 8 : 1) : 1,
+        minHeight: mobileProps ? '10vh' : 'auto'
+      }}
       animate={mobileProps ? {
-        height: mobileProps.isActive ? '100vh' : '10vh' // 1. Aumentamos altura al expandir
+        flex: mobileProps.isActive ? 8 : 1
       } : undefined}
       transition={{ duration: 0.5 }}
     >
