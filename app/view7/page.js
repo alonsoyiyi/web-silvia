@@ -80,7 +80,7 @@ const teamData = [
 const PyramidImage = ({ person, onClick, isRotating }) => {
   return (
     <motion.div
-      className="relative w-28 h-28 rounded-full overflow-hidden cursor-pointer"
+      className="relative w-24 h-24 rounded-full overflow-hidden cursor-pointer"
       initial={{ scale: 1 }}
       whileHover={{ scale: 1.1 }}
       onClick={() => onClick(person)}
@@ -158,7 +158,7 @@ export default function View7() {
       </div>
 
       <motion.div
-        className="relative w-[500px] h-[500px] flex items-center justify-center -mt-10"
+        className="relative w-[400px] h-[400px] flex items-center justify-center -mt-7"
         style={{
           transformOrigin: '50% 64%'
         }}
@@ -178,7 +178,7 @@ export default function View7() {
         </div>
 
         {/* Nivel 2 */}
-        <div className="absolute top-[28%] left-1/2 -translate-x-1/2 flex gap-20">
+        <div className="absolute top-[22%] left-1/2 -translate-x-1/2 flex gap-20">
           {teamData.slice(1, 3).map(person => (
             <PyramidImage 
               key={person.id} 
@@ -193,7 +193,7 @@ export default function View7() {
         </div>
 
         {/* Nivel 3 */}
-        <div className="absolute top-[55%] left-1/2 -translate-x-1/2 flex gap-16">
+        <div className="absolute top-[50%] left-1/2 -translate-x-1/2 flex gap-16">
           {teamData.slice(3, 6).map(person => (
             <PyramidImage 
               key={person.id} 
