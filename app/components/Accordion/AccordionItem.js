@@ -108,46 +108,74 @@ export default function AccordionItem({
 
       {showContent && (
         <motion.div
-          className="section-content"
+          className="section-content relative overflow-hidden"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.7 }}
           style={{ 
             position: 'absolute',
-            top: mobileProps ? '55%' : '50%', // 45% para móvil, mantenemos 60% para PC
+            top: mobileProps ? '55%' : '50%',
             left: '50%',
             transform: 'translate(-50%, -50%)',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
             width: mobileProps ? '90%' : '85%',
-            padding: mobileProps ? '2rem' : '1rem', // Padding diferente para cada versión
-            backgroundColor: 'rgba(0, 0, 0, 0.7)',
+            aspectRatio: '9/5',
+            maxHeight: '80vh',
+            padding: mobileProps ? '2rem' : '1rem',
             borderRadius: '8px',
-            marginBottom: mobileProps ? '2rem' : '0', // Margen solo para móvil
+            marginBottom: mobileProps ? '2rem' : '0',
+            overflow: 'hidden',
+            backgroundColor: 'transparent' // Hacer el contenedor transparente
           }}
         >
-          <p style={{ 
-            marginBottom: mobileProps ? '0.5rem' : '1rem' // Margen diferente para cada versión
-          }}>{content}</p>
-          <Link 
-            href={link}
-            className="section-button-wrapper"
-            style={{ 
-              textDecoration: 'none',
-              marginTop: mobileProps ? 'auto' : '0' // Separación solo en móvil
+          <video
+            className="absolute inset-0 w-full h-full object-cover"
+            autoPlay
+            muted
+            loop
+            playsInline
+            style={{
+              opacity: 0.5, // Aumentar la opacidad del video
+              mixBlendMode: 'normal', // Cambiar de 'multiply' a 'normal'
+              zIndex: 0,
+              transform: 'scale(1.1)',
+              objectFit: 'cover',
+              objectPosition: 'center center'
             }}
           >
-            <motion.button
-              className="section-button"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={(e) => e.stopPropagation()}
+            <source src="/videos/pergamino.mp4" type="video/mp4" />
+          </video>
+
+
+          <div className="relative z-10 w-full h-full flex flex-col justify-center">
+            <p style={{ 
+              marginBottom: mobileProps ? '0.5rem' : '1rem',
+              color: 'white',
+              maxWidth: '70%', // Controla el ancho del texto
+    margin: '0 auto', // Centra el texto horizontalmente
+    textAlign: 'center'
+            }}>{content}</p>
+            <Link 
+              href={link}
+              className="section-button-wrapper"
+              style={{ 
+                textDecoration: 'none',
+                marginTop: mobileProps ? 'auto' : '0'
+              }}
             >
-              Ver más
-            </motion.button>
-          </Link>
+              <motion.button
+                className="section-button"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={(e) => e.stopPropagation()}
+              >
+                Ver más
+              </motion.button>
+            </Link>
+          </div>
         </motion.div>
       )}
     </motion.div>
