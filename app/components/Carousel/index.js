@@ -42,7 +42,10 @@ const slideVariants = {
         x: custom.direction > 0 ? '110%' : '-110%',
         scale: 0.7,
         opacity: 1,
-        zIndex: 0
+        zIndex: 0,
+        rotateX: 0,
+        rotateY: custom.direction > 0 ? 45 : -45,
+        transformPerspective: 1000
     }),
     center: (custom) => {
         switch (custom.position) {
@@ -51,42 +54,60 @@ const slideVariants = {
                     x: '0%',
                     scale: 1,
                     opacity: 1,
-                    zIndex: 5
+                    zIndex: 5,
+                    rotateX: 0,
+                    rotateY: 0,
+                    transformPerspective: 1000
                 };
             case -1:
                 return {
-                    x: '-60%',
+                    x: '-75%',
                     scale: 0.85,
                     opacity: 1,
-                    zIndex: 4
+                    zIndex: 4,
+                    rotateX: 0,
+                    rotateY: 30,
+                    transformPerspective: 1000
                 };
             case 1:
                 return {
-                    x: '60%',
+                    x: '75%',
                     scale: 0.85,
                     opacity: 1,
-                    zIndex: 4
+                    zIndex: 4,
+                    rotateX: 0,
+                    rotateY: -30,
+                    transformPerspective: 1000
                 };
             case -2:
                 return {
-                    x: '-110%',
+                    x: '-140%',
                     scale: 0.7,
                     opacity: 1,
-                    zIndex: 3
+                    zIndex: 3,
+                    rotateX: 0,
+                    rotateY: 45,
+                    transformPerspective: 1000
                 };
             case 2:
                 return {
-                    x: '110%',
+                    x: '140%',
                     scale: 0.7,
                     opacity: 1,
-                    zIndex: 3
+                    zIndex: 3,
+                    rotateX: 0,
+                    rotateY: -45,
+                    transformPerspective: 1000
                 };
             default:
                 return {
                     x: '0%',
                     scale: 1,
                     opacity: 1,
-                    zIndex: 1
+                    zIndex: 1,
+                    rotateX: 0,
+                    rotateY: 0,
+                    transformPerspective: 1000
                 };
         }
     },
@@ -94,7 +115,10 @@ const slideVariants = {
         x: custom.direction > 0 ? '-110%' : '110%',
         scale: 0.7,
         opacity: 1,
-        zIndex: 0
+        zIndex: 0,
+        rotateX: 0,
+        rotateY: custom.direction > 0 ? -45 : 45,
+        transformPerspective: 1000
     })
 };
 
@@ -158,8 +182,9 @@ export default function Carousel({ onSlideChange }) {
     };
 
     return (
-        <div className="relative w-full h-[85vh] overflow-visible mx-auto max-w-[95%]">
-            <div className="absolute inset-0 flex items-center justify-center perspective-300">
+        <div className="relative w-full h-[85vh] overflow-visible mx-auto max-w-[95%]" style={{ perspective: '2000px' }}>
+            <div className="absolute inset-0 flex items-center justify-center">
+                {/* Slides */}
                 <AnimatePresence initial={false}>
                     {getVisibleIndices().map((itemIndex, arrayIndex) => {
                         const position = arrayIndex - 2;
@@ -194,36 +219,40 @@ export default function Carousel({ onSlideChange }) {
                                         style={{ objectFit: 'cover' }}
                                         priority={position === 0}
                                     />
-                                    <AnimatePresence mode="wait" initial={false}>
-                                        {position === 0 && (
-                                            <motion.div
-                                                key={`content-${itemIndex}-${direction}`}
-                                                custom={direction}
-                                                variants={contentVariants}
-                                                initial="enter"
-                                                animate="center"
-                                                exit="exit"
-                                                transition={{ duration: 0.3 }}
-                                                className="absolute inset-0 flex flex-col items-center justify-center text-white text-center p-8 bg-gradient-to-t from-black/70 via-black/50 to-transparent"
-                                            >
-                                                <h2 className="text-4xl font-bold mb-6">{carouselData[itemIndex].title}</h2>
-                                                <p className="mb-8 text-lg max-w-2xl">{carouselData[itemIndex].content}</p>
-                                                <Link
-                                                    href={carouselData[itemIndex].link}
-                                                    className="px-8 py-3 bg-white text-black font-semibold rounded-full hover:scale-105 transition-transform"
-                                                >
-                                                    Ver más
-                                                </Link>
-                                            </motion.div>
-                                        )}
-                                    </AnimatePresence>
+                                    <Link
+                                        href={carouselData[itemIndex].link}
+                                        className="absolute inset-0 z-20"
+                                    />
                                 </div>
                             </motion.div>
                         );
                     })}
                 </AnimatePresence>
+
+                {/* Texto Flotante - Completamente separado de los slides */}
+                <AnimatePresence mode="wait" initial={false}>
+                    <motion.div
+                        key={`content-${currentIndex}`}
+                        variants={contentVariants}
+                        initial="enter"
+                        animate="center"
+                        exit="exit"
+                        transition={{ duration: 0.3 }}
+                        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-screen max-w-[1200px] z-50"
+                    >
+                        <div className="text-white text-center">
+                            <h2 className="text-8xl font-bold mb-8 text-white drop-shadow-lg">
+                                {carouselData[currentIndex].title}
+                            </h2>
+                            <p className="text-3xl text-white drop-shadow-lg mx-auto">
+                                {carouselData[currentIndex].content}
+                            </p>
+                        </div>
+                    </motion.div>
+                </AnimatePresence>
             </div>
 
+            {/* Botones de navegación */}
             <button
                 onClick={handlePrev}
                 className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-16 z-10 bg-black/30 p-4 rounded-full hover:bg-black/50 transition-colors"
