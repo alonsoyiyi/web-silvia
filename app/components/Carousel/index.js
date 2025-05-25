@@ -63,7 +63,8 @@ const slideVariants = {
   }),
 };
 
-export default function Carousel() {
+// Añadir el prop onSlideChange
+export default function Carousel({ onSlideChange }) {
   const [currentIndex, setCurrentIndex] = useState(2);
   const [direction, setDirection] = useState(0);
 
@@ -157,20 +158,25 @@ export default function Carousel() {
     }
   };
 
-  // Modificar los manejadores de click para incluir la dirección
+  // Modificar los manejadores de click para incluir la dirección y el callback
   const handlePrev = () => {
     setDirection(-1);
-    setCurrentIndex((prev) => 
-      prev === 0 ? carouselData.length - 1 : prev - 1
-    );
+    const newIndex = currentIndex === 0 ? carouselData.length - 1 : currentIndex - 1;
+    setCurrentIndex(newIndex);
+    onSlideChange(carouselData[newIndex].bgImage);
   };
 
   const handleNext = () => {
     setDirection(1);
-    setCurrentIndex((prev) => 
-      prev === carouselData.length - 1 ? 0 : prev + 1
-    );
+    const newIndex = currentIndex === carouselData.length - 1 ? 0 : currentIndex + 1;
+    setCurrentIndex(newIndex);
+    onSlideChange(carouselData[newIndex].bgImage);
   };
+
+  // Efectuar el cambio inicial
+  useEffect(() => {
+    onSlideChange(carouselData[currentIndex].bgImage);
+  }, []);
 
   return (
     <div className="relative w-full h-[85vh] overflow-visible mx-auto max-w-[95%]"> {/* Removido bg-black y cambiado overflow-hidden a overflow-visible */}
