@@ -30,23 +30,23 @@ export default function Home() {
               />
             </div>
 
-            {/* Links - cambiado ml-auto por justify-end y w-1/2 */}
-            <div className="w-1/2 flex items-center justify-end gap-16">
+            {/* Links - ajustando tamaño y posición */}
+            <div className="w-2/3 flex items-center justify-end gap-20">
               <Link 
-                href="/proyecto" 
-                className="text-white hover:text-gray-300 transition-colors text-lg"
+                href="/proyectoT" 
+                className="text-white hover:text-gray-300 transition-colors text-2xl"
               >
                 Proyecto Transmedial
               </Link>
               <Link 
                 href="/documental" 
-                className="text-white hover:text-gray-300 transition-colors text-lg"
+                className="text-white hover:text-gray-300 transition-colors text-2xl"
               >
                 Documental
               </Link>
               <Link 
                 href="/nosotros" 
-                className="text-white hover:text-gray-300 transition-colors text-lg"
+                className="text-white hover:text-gray-300 transition-colors text-2xl"
               >
                 Sobre Nosotros
               </Link>
@@ -65,7 +65,7 @@ export default function Home() {
         {/* Botón de scroll con SVG */}
         <button 
           onClick={scrollToCarousel}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 cursor-pointer transition-transform hover:scale-110"
+          className="absolute bottom-2 left-1/2 -translate-x-1/2 z-10 cursor-pointer transition-transform hover:scale-110"
         >
           <Image
             src="/images/arrow.svg"
@@ -107,7 +107,7 @@ export default function Home() {
         
         {/* Título - reducido el margen inferior de mb-12 a mb-8 */}
         <h2 className="text-4xl font-bold text-white mb-8 relative z-10">
-          Brazos Transmediales
+          BRAZOS TRANSMEDIALES
         </h2>
         
         {/* Contenido del carrusel */}
