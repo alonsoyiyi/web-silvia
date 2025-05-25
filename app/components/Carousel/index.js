@@ -6,237 +6,254 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const carouselData = [
     {
-        title: "Sobre el Proyecto",
-        content: "Adéntrate en nuestro documental y sumérgete en el misterioso mundo de la magia negra y blanca.",
+        title: "PODCAST",
+        content: "-Susurros de una Noche",
         link: "/view1",
-        bgImage: "/images/section1.png"
-      },
-      {
-        title: "Documental",
-        content: "Escucha impactantes historias reales sobre sucesos inexplicables, rituales de limpieza y prácticas ocultas.",
+        bgImage: "/images/podcast.png"
+    },
+    {
+        title: "BLOG",
+        content: "-Entre el Miedo y la Fe",
         link: "/view2",
-        bgImage: "/images/section2.png"
-      },
-      {
-        title: "Podcast",
-        content: "Descubre los mitos y verdades que envuelven a la magia y comprende mejor una parte fascinante de nuestra cultura.",
+        bgImage: "/images/blog.png"
+    },
+    {
+        title: "CÓMIC",
+        content: "-El último Conjuro",
         link: "/view3",
-        bgImage: "/images/section3.png"
-      },
-      {
-        title: "Blog - Entre Mitos y Verdades",
-        content: "Explora cómo la magia sigue viva en nuestras creencias y cultura.Un viaje entre el misterio y la realidad que revela nuestro patrimonio oculto.",
+        bgImage: "/images/comic.png"
+    },
+    {
+        title: "DOCUMENTAL",
+        content: "-Entre Sombras y Luces",
         link: "/view4",
-        bgImage: "/images/section4.png"
-      },
-      {
-        title: "Cómic - El último Conjuro",
-        content: "No te pierdas nuestro cómic interactivo, donde tú serás el protagonista y decidirás cómo termina esta historia mágica.",
+        bgImage: "/images/documental.png"
+    },
+    {
+        title: "VIDEOJUEGO",
+        content: "-Bruji Aventuras",
         link: "/view5",
-        bgImage: "/images/section5.png"
-      },
-      {
-        title: "Video Juego - Bruji Aventuras",
-        content: "¡Diviértete con un juego lleno de hechizos y sorpresas! Embárcate en una brujiaventura donde cada decisión te acercará a lo inesperado.",
-        link: "/view6",
-        bgImage: "/images/section6.png"
-      },
-      {
-        title: "Conócenos",
-        content: "Somos una productora de jóvenes apasionados que transforma ideas en historias que conectan, inspiran y emocionan. ¡Conócenos!",
-        link: "/view7",
-        bgImage: "/images/section7.png"
-      }
+        bgImage: "/images/videojuego.png"
+    }
 ];
 
-// Modificamos las variantes de animación para que sean más simples
 const slideVariants = {
-  enter: (direction) => ({
-    x: direction > 0 ? 1000 : -1000,
-  }),
-  center: {
-    x: 0,
-    zIndex: 1,
-  },
-  exit: (direction) => ({
-    x: direction < 0 ? 1000 : -1000,
-  }),
+    enter: (custom) => ({
+        x: custom.direction > 0 ? '110%' : '-110%',
+        scale: 0.7,
+        opacity: 1,
+        zIndex: 0
+    }),
+    center: (custom) => {
+        switch (custom.position) {
+            case 0:
+                return {
+                    x: '0%',
+                    scale: 1,
+                    opacity: 1,
+                    zIndex: 5
+                };
+            case -1:
+                return {
+                    x: '-60%',
+                    scale: 0.85,
+                    opacity: 1,
+                    zIndex: 4
+                };
+            case 1:
+                return {
+                    x: '60%',
+                    scale: 0.85,
+                    opacity: 1,
+                    zIndex: 4
+                };
+            case -2:
+                return {
+                    x: '-110%',
+                    scale: 0.7,
+                    opacity: 1,
+                    zIndex: 3
+                };
+            case 2:
+                return {
+                    x: '110%',
+                    scale: 0.7,
+                    opacity: 1,
+                    zIndex: 3
+                };
+            default:
+                return {
+                    x: '0%',
+                    scale: 1,
+                    opacity: 1,
+                    zIndex: 1
+                };
+        }
+    },
+    exit: (custom) => ({
+        x: custom.direction > 0 ? '-110%' : '110%',
+        scale: 0.7,
+        opacity: 1,
+        zIndex: 0
+    })
 };
 
-// Añadir el prop onSlideChange
+// Modificar las variantes del contenido
+const contentVariants = {
+    enter: (direction) => ({
+        x: direction > 0 ? 50 : -50,
+        opacity: 0
+    }),
+    center: {
+        x: 0,
+        opacity: 1
+    },
+    exit: (direction) => ({
+        x: direction > 0 ? -50 : 50,
+        opacity: 0
+    })
+};
+
 export default function Carousel({ onSlideChange }) {
-  const [currentIndex, setCurrentIndex] = useState(2);
-  const [direction, setDirection] = useState(0);
+    const [currentIndex, setCurrentIndex] = useState(2); // Comenzar desde el índice 2 para tener dos slides a cada lado
+    const [direction, setDirection] = useState(0);
 
-  // Función auxiliar para obtener los índices de las imágenes que se mostrarán
-  const getVisibleIndices = () => {
-    const indices = [];
-    for (let i = -2; i <= 2; i++) {
-      let index = currentIndex + i;
-      // Ajustamos el índice para crear el efecto de loop
-      if (index < 0) {
-        index = carouselData.length + index;
-      } else if (index >= carouselData.length) {
-        index = index - carouselData.length;
-      }
-      indices.push(index);
-    }
-    return indices;
-  };
-
-  // Modificamos getSlideStyles para incluir la transición de opacidad
-  const getSlideStyles = (index) => {
-    const position = index - 2;
-    
-    let styles = {
-      position: 'absolute',
-      transition: 'all 0.5s ease-in-out',
+    const getVisibleIndices = () => {
+        const indices = [];
+        const totalSlides = carouselData.length;
+        
+        // Obtener los 5 índices (-2, -1, 0, 1, 2 relativos al índice actual)
+        for (let i = -2; i <= 2; i++) {
+            let index = currentIndex + i;
+            
+            // Manejo circular del índice
+            if (index < 0) {
+                index = totalSlides + index;
+            } else if (index >= totalSlides) {
+                index = index % totalSlides;
+            }
+            
+            indices.push(index);
+        }
+        
+        return indices;
     };
 
-    switch (position) {
-      case 0: // Slide central
-        return {
-          ...styles,
-          left: '50%',
-          transform: 'translateX(-50%)',
-          width: '350px',
-          height: '500px',
-          zIndex: 5,
-          opacity: 1,
-          filter: 'brightness(1.1) contrast(1.1)',
-        };
-      case -1: // Izquierda inmediata
-        return {
-          ...styles,
-          left: '25%', // Cambiado de 20% a 30% para acercarlo al centro
-          transform: 'translateX(-50%) perspective(1000px) rotateY(15deg)',
-          width: '220px',
-          height: '330px',
-          zIndex: 4,
-          opacity: 0.9,
-          filter: 'brightness(0.9) contrast(1.05)',
-        };
-      case 1: // Derecha inmediata
-        return {
-          ...styles,
-          left: '75%', // Cambiado de 80% a 70% para acercarlo al centro
-          transform: 'translateX(-50%) perspective(1000px) rotateY(-15deg)',
-          width: '220px',
-          height: '330px',
-          zIndex: 4,
-          opacity: 0.9,
-          filter: 'brightness(0.9) contrast(1.05)',
-        };
-      case -2: // Far left
-        return {
-          ...styles,
-          left: '10%', // Cambiado de 5% a 10%
-          transform: 'translateX(-50%) perspective(1000px) rotateY(30deg)',
-          width: '130px',
-          height: '195px',
-          zIndex: 3,
-          opacity: 0.7,
-          filter: 'brightness(0.8) contrast(1)',
-        };
-      case 2: // Far right
-        return {
-          ...styles,
-          left: '90%', // Cambiado de 95% a 90%
-          transform: 'translateX(-50%) perspective(1000px) rotateY(-30deg)',
-          width: '130px',
-          height: '195px',
-          zIndex: 3,
-          opacity: 0.7,
-          filter: 'brightness(0.8) contrast(1)',
-        };
-      default:
-        return {
-          ...styles,
-          opacity: 0,
-          pointerEvents: 'none',
-        };
-    }
-  };
+    useEffect(() => {
+        onSlideChange(carouselData[currentIndex].bgImage);
+    }, [currentIndex, onSlideChange]);
 
-  // Modificar los manejadores de click para incluir la dirección y el callback
-  const handlePrev = () => {
-    setDirection(-1);
-    const newIndex = currentIndex === 0 ? carouselData.length - 1 : currentIndex - 1;
-    setCurrentIndex(newIndex);
-    onSlideChange(carouselData[newIndex].bgImage);
-  };
+    const handlePrev = () => {
+        setDirection(-1);
+        setCurrentIndex(prevIndex => 
+            prevIndex === 0 ? carouselData.length - 1 : prevIndex - 1
+        );
+    };
 
-  const handleNext = () => {
-    setDirection(1);
-    const newIndex = currentIndex === carouselData.length - 1 ? 0 : currentIndex + 1;
-    setCurrentIndex(newIndex);
-    onSlideChange(carouselData[newIndex].bgImage);
-  };
+    const handleNext = () => {
+        setDirection(1);
+        setCurrentIndex(prevIndex => 
+            prevIndex === carouselData.length - 1 ? 0 : prevIndex + 1
+        );
+    };
 
-  // Efectuar el cambio inicial
-  useEffect(() => {
-    onSlideChange(carouselData[currentIndex].bgImage);
-  }, []);
-
-  return (
-    <div className="relative w-full h-[85vh] overflow-visible mx-auto max-w-[95%]"> {/* Removido bg-black y cambiado overflow-hidden a overflow-visible */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        {getVisibleIndices().map((itemIndex, arrayIndex) => (
-          <motion.div
-            key={`${itemIndex}`}
-            style={getSlideStyles(arrayIndex)}
-            className="absolute"
-            initial={{ opacity: arrayIndex === 0 || arrayIndex === 4 ? 0 : 1 }}
-            animate={{ 
-              opacity: getSlideStyles(arrayIndex).opacity,
-            }}
-            transition={{
-              duration: 0.3,
-              ease: "easeInOut"
-            }}
-          >
-            <div className="relative w-full h-full rounded-lg overflow-hidden">
-              <Image
-                src={carouselData[itemIndex].bgImage}
-                alt={carouselData[itemIndex].title}
-                fill
-                style={{ objectFit: 'cover' }}
-                priority={arrayIndex === 2}
-              />
-              {arrayIndex === 2 && (
-                <motion.div 
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  className="absolute inset-0 flex flex-col items-center justify-center text-white text-center p-8 bg-gradient-to-t from-black/70 via-black/50 to-transparent"
-                >
-                  <h2 className="text-4xl font-bold mb-6">{carouselData[itemIndex].title}</h2>
-                  <p className="mb-8 text-lg max-w-2xl">{carouselData[itemIndex].content}</p>
-                  <Link
-                    href={carouselData[itemIndex].link}
-                    className="px-8 py-3 bg-white text-black font-semibold rounded-full hover:scale-105 transition-transform"
-                  >
-                    Ver más
-                  </Link>
-                </motion.div>
-              )}
+    return (
+        <div className="relative w-full h-[85vh] overflow-visible mx-auto max-w-[95%]">
+            <div className="absolute inset-0 flex items-center justify-center perspective-300">
+                <AnimatePresence initial={false}>
+                    {getVisibleIndices().map((itemIndex, arrayIndex) => {
+                        const position = arrayIndex - 2;
+                        return (
+                            <motion.div
+                                key={`slide-${itemIndex}-${direction}`}
+                                custom={{ direction, position }}
+                                data-pos={position}
+                                style={{
+                                    position: 'absolute',
+                                    width: '350px',
+                                    height: '500px',
+                                    transformOrigin: 'center center'
+                                }}
+                                initial="enter"
+                                animate="center"
+                                exit="exit"
+                                variants={slideVariants}
+                                transition={{
+                                    type: "spring",
+                                    stiffness: 200,
+                                    damping: 25,
+                                    mass: 0.5,
+                                    duration: 0.5
+                                }}
+                            >
+                                <div className="relative w-full h-full rounded-lg overflow-hidden">
+                                    <Image
+                                        src={carouselData[itemIndex].bgImage}
+                                        alt={carouselData[itemIndex].title}
+                                        fill
+                                        style={{ objectFit: 'cover' }}
+                                        priority={position === 0}
+                                    />
+                                    <AnimatePresence mode="wait" initial={false}>
+                                        {position === 0 && (
+                                            <motion.div
+                                                key={`content-${itemIndex}-${direction}`}
+                                                custom={direction}
+                                                variants={contentVariants}
+                                                initial="enter"
+                                                animate="center"
+                                                exit="exit"
+                                                transition={{ duration: 0.3 }}
+                                                className="absolute inset-0 flex flex-col items-center justify-center text-white text-center p-8 bg-gradient-to-t from-black/70 via-black/50 to-transparent"
+                                            >
+                                                <h2 className="text-4xl font-bold mb-6">{carouselData[itemIndex].title}</h2>
+                                                <p className="mb-8 text-lg max-w-2xl">{carouselData[itemIndex].content}</p>
+                                                <Link
+                                                    href={carouselData[itemIndex].link}
+                                                    className="px-8 py-3 bg-white text-black font-semibold rounded-full hover:scale-105 transition-transform"
+                                                >
+                                                    Ver más
+                                                </Link>
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+                                </div>
+                            </motion.div>
+                        );
+                    })}
+                </AnimatePresence>
             </div>
-          </motion.div>
-        ))}
-      </div>
 
-      <button
-        onClick={handlePrev}
-        className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-16 text-white z-10 bg-black/30 px-5 py-3 rounded-full hover:bg-black/50 transition-colors text-2xl font-light"
-      >
-        &#60;
-      </button>
-      <button
-        onClick={handleNext}
-        className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-16 text-white z-10 bg-black/30 px-5 py-3 rounded-full hover:bg-black/50 transition-colors text-2xl font-light"
-      >
-        &#62;
-      </button>
-    </div>
-  );
+            <button
+                onClick={handlePrev}
+                className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-16 z-10 bg-black/30 p-4 rounded-full hover:bg-black/50 transition-colors"
+            >
+                <Image
+                    src="/images/arrow.svg"
+                    alt="Previous"
+                    width={60}
+                    height={60}
+                    className="rotate-[180deg] brightness-0 invert"
+                    style={{
+                        filter: 'brightness(0) invert(1)',
+                    }}
+                />
+            </button>
+            <button
+                onClick={handleNext}
+                className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-16 z-10 bg-black/30 p-4 rounded-full hover:bg-black/50 transition-colors"
+            >
+                <Image
+                    src="/images/arrow.svg"
+                    alt="Next"
+                    width={60}
+                    height={60}
+                    className="rotate-0 brightness-0 invert"
+                    style={{
+                        filter: 'brightness(0) invert(1)',
+                    }}
+                />
+            </button>
+        </div>
+    );
 }

@@ -1,14 +1,84 @@
 'use client';
 import { useState } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 import Carousel from './components/Carousel';
 import '../app/styles.css';
 
 export default function Home() {
   const [currentBgImage, setCurrentBgImage] = useState('');
 
+  const scrollToCarousel = () => {
+    const carouselSection = document.querySelector('.content-section');
+    carouselSection?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <main className="main-container">
-      <div className="video-section">
+      <div className="video-section relative">
+        {/* Navbar */}
+        <nav className="absolute top-0 left-0 w-full z-50 px-8 py-2">
+          <div className="max-w-7xl mx-auto flex items-center justify-between">
+            {/* Logo - aumentado de w-40 a w-48 */}
+            <div className="relative w-48 h-20">
+              <Image
+                src="/images/logohome.png"
+                alt="Logo"
+                fill
+                style={{ objectFit: 'contain' }}
+                priority
+              />
+            </div>
+
+            {/* Links - cambiado ml-auto por justify-end y w-1/2 */}
+            <div className="w-1/2 flex items-center justify-end gap-16">
+              <Link 
+                href="/proyecto" 
+                className="text-white hover:text-gray-300 transition-colors text-lg"
+              >
+                Proyecto Transmedial
+              </Link>
+              <Link 
+                href="/documental" 
+                className="text-white hover:text-gray-300 transition-colors text-lg"
+              >
+                Documental
+              </Link>
+              <Link 
+                href="/nosotros" 
+                className="text-white hover:text-gray-300 transition-colors text-lg"
+              >
+                Sobre Nosotros
+              </Link>
+            </div>
+          </div>
+
+          {/* Línea divisoria - ajustada para coincidir con el contenido */}
+          <div className="absolute bottom-0 left-8 right-8 h-[1px] bg-white/50 mx-auto" 
+               style={{ 
+                 width: 'calc(100% - 4rem)',
+                 maxWidth: '80rem' /* equivalente a max-w-7xl */
+               }} 
+          />
+        </nav>
+
+        {/* Botón de scroll con SVG */}
+        <button 
+          onClick={scrollToCarousel}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 cursor-pointer transition-transform hover:scale-110"
+        >
+          <Image
+            src="/images/arrow.svg"
+            alt="Scroll to carousel"
+            width={80}
+            height={80}
+            className="rotate-90 brightness-0 invert" // Rotación y color blanco
+            style={{
+              filter: 'brightness(0) invert(1)', // Asegura color blanco en Safari
+            }}
+          />
+        </button>
+
         <video
           autoPlay
           muted
@@ -21,18 +91,24 @@ export default function Home() {
       </div>
 
       <div 
-        className="content-section relative flex items-center justify-center py-20"
+        className="content-section relative flex flex-col items-center justify-center py-12" // cambiado de py-20 a py-12
       >
         {/* Fondo dinámico */}
         <div 
-          className="absolute inset-0 w-full h-full opacity-50 transition-all duration-300"
+          className="absolute inset-0 w-full h-full opacity-50 transition-all duration-700"
           style={{
             backgroundImage: `url(${currentBgImage})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
+            transition: 'background-image 0.7s ease-in-out'
           }}
         />
+        
+        {/* Título - reducido el margen inferior de mb-12 a mb-8 */}
+        <h2 className="text-4xl font-bold text-white mb-8 relative z-10">
+          Brazos Transmediales
+        </h2>
         
         {/* Contenido del carrusel */}
         <section className="slider-section w-full max-w-7xl mx-auto relative z-10">
