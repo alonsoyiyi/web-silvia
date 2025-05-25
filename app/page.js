@@ -1,5 +1,5 @@
-import Accordion from './components/Accordion';
-import './components/Accordion/styles.css';
+import Carousel from './components/Carousel';
+import '../app/styles.css';
 
 export default function Home() {
   return (
@@ -16,9 +16,9 @@ export default function Home() {
         </video>
       </div>
 
-      <div className="content-section">
-        <section className="accordion-section">
-          <Accordion />
+      <div className="content-section flex items-center justify-center py-20"> {/* Modificado aquí */}
+        <section className="slider-section w-full max-w-7xl mx-auto"> {/* Modificado aquí */}
+          <Carousel />
         </section>
       </div>
     </main>
