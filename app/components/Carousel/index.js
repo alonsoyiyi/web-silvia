@@ -8,31 +8,31 @@ const carouselData = [
     {
         title: "PODCAST",
         content: "-Susurros de una Noche",
-        link: "/view1",
+        link: "/podcast",
         bgImage: "/images/podcast.png"
     },
     {
         title: "BLOG",
         content: "-Entre el Miedo y la Fe",
-        link: "/view2",
+        link: "/blog",
         bgImage: "/images/blog.png"
     },
     {
         title: "CÓMIC",
         content: "-El último Conjuro",
-        link: "/view3",
+        link: "/comic",
         bgImage: "/images/comic.png"
     },
     {
         title: "DOCUMENTAL",
         content: "-Entre Sombras y Luces",
-        link: "/view4",
+        link: "/documental",
         bgImage: "/images/documental.png"
     },
     {
         title: "VIDEOJUEGO",
         content: "-Bruji Aventuras",
-        link: "/view5",
+        link: "/videojuego",
         bgImage: "/images/videojuego.png"
     }
 ];

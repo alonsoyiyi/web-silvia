@@ -45,7 +45,7 @@ export default function Home() {
                 Documental
               </Link>
               <Link 
-                href="/nosotros" 
+                href="/sobrenosotros" 
                 className="text-white hover:text-gray-300 transition-colors text-2xl"
               >
                 Sobre Nosotros
