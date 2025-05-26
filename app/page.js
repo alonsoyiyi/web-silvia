@@ -7,14 +7,44 @@ import '../app/styles.css';
 
 export default function Home() {
   const [currentBgImage, setCurrentBgImage] = useState('');
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   const scrollToCarousel = () => {
-    const carouselSection = document.querySelector('.content-section');
-    carouselSection?.scrollIntoView({ behavior: 'smooth' });
+    setIsTransitioning(true);
+    
+    setTimeout(() => {
+      const carouselSection = document.querySelector('.content-section');
+      carouselSection?.scrollIntoView({ behavior: 'smooth' });
+      
+      // Comenzar fade out cuando el video está por terminar
+      setTimeout(() => {
+        const transitionElement = document.querySelector('.smoke-transition');
+        transitionElement?.classList.add('fadeout');
+        
+        // Remover la transición después del fade out
+        setTimeout(() => {
+          setIsTransitioning(false);
+        }, 1000);
+      }, 1000); // Comienza el fade out después de 1s
+    }, 1000);
   };
 
   return (
     <main className="main-container">
+      {/* Overlay de transición con humo */}
+      {isTransitioning && (
+        <div className={`smoke-transition ${isTransitioning ? 'active' : ''}`}>
+          <video
+            autoPlay
+            muted
+            playsInline
+            className="w-full h-full object-cover"
+          >
+            <source src="/videos/smoke-transition.mp4" type="video/mp4" />
+          </video>
+        </div>
+      )}
+
       <div className="video-section relative">
         {/* Navbar */}
         <nav className="absolute top-0 left-0 w-full z-50 px-8 py-2">

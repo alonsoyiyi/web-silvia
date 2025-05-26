@@ -244,4 +244,22 @@
       margin-bottom: 2rem; /* Espacio entre el video y el acordeón */
     }
 
+    /* Estilos para la transición de humo */
+    .smoke-transition {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 2s ease-in-out; /* Aumentado a 2s para toda la transición */
+    }
     
+    .smoke-transition.active {
+      opacity: 1;
+    }
+    
+    .smoke-transition.fadeout {
+      opacity: 0;
+      transition: opacity 1s ease-out; /* Transición suave para el fade out */
+    }
+
