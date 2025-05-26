@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import EpisodesSlider from '../components/EpisodesSlider';
 
 export default function DocumentalPage() {
   return (
@@ -59,9 +60,9 @@ export default function DocumentalPage() {
         </div>
       </div>
 
-      {/* Segunda sección - Contenido adicional */}
-      <div className="w-full min-h-screen bg-black">
-        {/* Aquí irá el contenido de la segunda sección */}
+      {/* Segunda sección - Slider de episodios */}
+      <div className="w-full bg-black">
+        <EpisodesSlider />
       </div>
     </main>
   );
