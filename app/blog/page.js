@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import EpisodesSlider from '../components/EpisodesSlider';
 
 export default function DocumentalPage() {
   return (
