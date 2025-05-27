@@ -251,15 +251,20 @@
       z-index: 50;
       pointer-events: none;
       opacity: 0;
-      transition: opacity 2s ease-in-out; /* Aumentado a 2s para toda la transición */
+      transition: opacity 1s ease-in-out;
     }
     
     .smoke-transition.active {
+      opacity: 0.5; /* Cambiado de 0 a 0.5 para que sea visible */
+    }
+    
+    .smoke-transition.fadein {
       opacity: 1;
+      transition: opacity 1s ease-in;
     }
     
     .smoke-transition.fadeout {
       opacity: 0;
-      transition: opacity 1s ease-out; /* Transición suave para el fade out */
+      transition: opacity 1s ease-out;
     }
 

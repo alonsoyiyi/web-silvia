@@ -12,21 +12,27 @@ export default function Home() {
   const scrollToCarousel = () => {
     setIsTransitioning(true);
     
-    setTimeout(() => {
-      const carouselSection = document.querySelector('.content-section');
-      carouselSection?.scrollIntoView({ behavior: 'smooth' });
+    // Esperar un frame para que la transición se active
+    requestAnimationFrame(() => {
+      const transitionElement = document.querySelector('.smoke-transition');
+      transitionElement?.classList.add('fadein');
       
-      // Comenzar fade out cuando el video está por terminar
       setTimeout(() => {
-        const transitionElement = document.querySelector('.smoke-transition');
-        transitionElement?.classList.add('fadeout');
+        const carouselSection = document.querySelector('.content-section');
+        carouselSection?.scrollIntoView({ behavior: 'smooth' });
         
-        // Remover la transición después del fade out
+        // Comenzar fade out cuando el video está por terminar
         setTimeout(() => {
-          setIsTransitioning(false);
-        }, 1000);
-      }, 1000); // Comienza el fade out después de 1s
-    }, 1000);
+          transitionElement?.classList.remove('fadein');
+          transitionElement?.classList.add('fadeout');
+          
+          // Remover la transición después del fade out
+          setTimeout(() => {
+            setIsTransitioning(false);
+          }, 1000);
+        }, 500);
+      }, 1000);
+    });
   };
 
   return (
@@ -40,7 +46,7 @@ export default function Home() {
             playsInline
             className="w-full h-full object-cover"
           >
-            <source src="/videos/smoke-transition.mp4" type="video/mp4" />
+            <source src="/videos/smoke-transition2.mp4" type="video/mp4" />
           </video>
         </div>
       )}
