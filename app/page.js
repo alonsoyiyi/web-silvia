@@ -122,7 +122,7 @@ export default function Home() {
           playsInline
           className="background-video"
         >
-          <source src="/videos/fondo1.mp4" type="video/mp4" />
+          <source src="/videos/color.mp4" type="video/mp4" />
         </video>
       </div>
 
