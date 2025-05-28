@@ -9,43 +9,43 @@ const specialists = [
     id: 1,
     name: 'Gerardo Menacho',
     image: '/images/GERARDO-MENACHO.webp',
-    role: 'Especialista'
+    role: 'Escéptico'
   },
   {
     id: 2,
     name: 'Helen Alejandro',
     image: '/images/HELEN-ALEJANDRO.webp',
-    role: 'Especialista'
+    role: 'Afectada por brujería'
   },
   {
     id: 3,
     name: 'Jesús Lazo',
     image: '/images/JESUS-LAZO.webp',
-    role: 'Especialista'
+    role: 'Psicóloga'
   },
   {
     id: 4,
     name: 'Kelly Pairazaman',
     image: '/images/KELLY-PAIRAZAMAN.webp',
-    role: 'Especialista'
+    role: 'Afectada por brujería'
   },
   {
     id: 5,
     name: 'Luis Felipe Pardo',
     image: '/images/LUIS-FELIPE-PARDO.webp',
-    role: 'Especialista'
+    role: 'Cura'
   },
   {
     id: 6,
     name: 'Milagros Albarracín',
     image: '/images/MILAGROS-ALBARRACIN.webp',
-    role: 'Especialista'
+    role: 'Médium y psíquica'
   },
   {
     id: 7,
     name: 'Angela Alejos',
     image: '/images/ANGELA-ALEJOS.webp',
-    role: 'Especialista'
+    role: 'Chamana'
   }
 ];
 
@@ -330,8 +330,8 @@ export default function PodcastPage() {
               </div>
               <h3 className="text-2xl font-semibold text-white mt-4">Entre el Miedo y la Fe</h3>
             </div>
-            <p className="w-[60%] text-lg text-white/80 text-center">
-              Una serie de episodios que profundizan en las historias personales de quienes han experimentado encuentros con la brujería, combinando testimonios reales con análisis de expertos.
+            <p className="w-[60%] text-lg text-white/80 text-justify">
+              Contaremos con un blog transmedial en la plataforma X (antes Twitter), donde compartiremos hilos sobre la magia blanca y negra. Con un enfoque respetuoso y reflexivo, nuestro objetivo será comprender y visibilizar el trasfondo cultural de la brujería popular. Buscaremos promover el diálogo abierto y contribuir a romper los estigmas que existen en torno a estas prácticas.
             </p>
           </div>
 
@@ -348,8 +348,8 @@ export default function PodcastPage() {
               </div>
               <h3 className="text-2xl font-semibold text-white mt-4">Entre Sombras y Luces</h3>
             </div>
-            <p className="w-[60%] text-lg text-white/80 text-center">
-              Un viaje visual que explora la intersección entre las creencias místicas y la vida moderna, mostrado a través de las experiencias de nuestros protagonistas.
+            <p className="w-[60%] text-lg text-white/80 text-justify">
+              Tendremos una serie de cuatro capítulos titulados: &ldquo;El reflejo de la mente&rdquo;, &ldquo;La voz de la quebrada&rdquo;, &ldquo;El juego del péndulo&rdquo; y &ldquo;El daño invisible&rdquo;. Este podcast te llevará a los rincones más profundos y oscuros del misterio, explorando experiencias reales y creencias que desafían la lógica, pero que forman parte de nuestra memoria colectiva.
             </p>
           </div>
 
@@ -366,8 +366,8 @@ export default function PodcastPage() {
               </div>
               <h3 className="text-2xl font-semibold text-white mt-4">Susurros de una Sombra</h3>
             </div>
-            <p className="w-[60%] text-lg text-white/80 text-center">
-              Una colección de imágenes que capturan la esencia visual de la brujería contemporánea, sus practicantes y los espacios donde estas prácticas cobran vida.
+            <p className="w-[60%] text-lg text-white/80 text-justify">
+              Tendremos una serie de cuatro capítulos: &ldquo;El reflejo de la mente&rdquo;, &ldquo;La voz de la quebrada&rdquo;, &ldquo;El juego del péndulo&rdquo; y &ldquo;El daño invisible&rdquo;. Este podcast te sumerge en los rincones más profundos y oscuros del misterio, explorando experiencias reales y creencias que desafían la lógica, pero que forman parte de nuestra memoria colectiva.
             </p>
           </div>
 
@@ -384,8 +384,8 @@ export default function PodcastPage() {
               </div>
               <h3 className="text-2xl font-semibold text-white mt-4">El útimo Conjuro</h3>
             </div>
-            <p className="w-[60%] text-lg text-white/80 text-center">
-              Una plataforma interactiva que reúne todos los elementos del proyecto, permitiendo una exploración profunda de cada aspecto de la investigación.
+            <p className="w-[60%] text-lg text-white/80 text-justify">
+              Contaremos con un cómic animado que narra la historia de Julia, una bruja buena traicionada por su aquelarre, y su nieto Lucas, quien deberá enfrentar su legado mágico y decidir si rompe la maldición que amenaza con repetirse 
             </p>
           </div>
 
@@ -402,8 +402,8 @@ export default function PodcastPage() {
               </div>
               <h3 className="text-2xl font-semibold text-white mt-4">Bruji Aventuras</h3>
             </div>
-            <p className="w-[60%] text-lg text-white/80 text-center">
-              Contenido complementario que expande las historias principales y mantiene una conversación activa con nuestra audiencia sobre estos temas.
+            <p className="w-[60%] text-lg text-white/80 text-justify">
+              Presentamos &ldquo;Bruji Aventuras&rdquo;, un juego interactivo donde los jugadores completan misiones mágicas, y sus decisiones los llevan a un resultado exitoso o a divertidas sorpresas si eligen el camino equivocado.
             </p>
           </div>
         </div>

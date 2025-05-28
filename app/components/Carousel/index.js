@@ -18,17 +18,18 @@ const carouselData = [
         bgImage: "/images/blog.png"
     },
     {
-        title: "CÓMIC",
-        content: "-El último Conjuro",
-        link: "/comic",
-        bgImage: "/images/comic.png"
-    },
-    {
         title: "DOCUMENTAL",
         content: "-Entre Sombras y Luces",
         link: "/documental",
         bgImage: "/images/documental.png"
     },
+    {
+        title: "CÓMIC",
+        content: "-El último Conjuro",
+        link: "/comic",
+        bgImage: "/images/comic.png"
+    },
+    
     {
         title: "VIDEOJUEGO",
         content: "-Bruji Aventuras",

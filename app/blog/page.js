@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import ImageGrid from '../components/ImageGrid';
 
 export default function DocumentalPage() {
   return (
@@ -38,16 +39,21 @@ export default function DocumentalPage() {
             Entre el Miedo <br /> y la Fe
           </h1>
 
-          <button className="px-4 py-1 bg-white text-black rounded-full hover:scale-105 transition-transform text-lg flex items-center gap-2">
+          <Link 
+            href="https://x.com/entre_miedoyfe?s=21"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-4 py-1 bg-white text-black rounded-full hover:scale-105 transition-transform text-lg flex items-center gap-2"
+          >
             <Image
               src="/images/videoY.svg"
               alt="Video icon"
               width={32}
               height={32}
-              className="brightness-0" // Makes the SVG black to match text
+              className="brightness-0"
             />
             Ver más
-          </button>
+          </Link>
         </div>
 
         {/* Texto inferior - moved up and made single line */}
@@ -62,28 +68,7 @@ export default function DocumentalPage() {
     
       {/* Segunda sección - Imágenes interactivas */}
       <div className="w-full bg-black -mt-28">
-        <div className="max-w-7xl mx-auto px-8 grid grid-cols-3 gap-12"> {/* Increased gap for scaling space */}
-          {[
-            { src: '/images/preciooscuro.webp', alt: 'Precio Oscuro' },
-            { src: '/images/cuyhuevo.webp', alt: 'Cuy Huevo' },
-            { src: '/images/balanza.webp', alt: 'Balanza' }
-          ].map((image, index) => (
-            <div 
-              key={index} 
-              className="relative h-[500px] overflow-visible rounded-lg group z-10 hover:z-20" // Changed overflow to visible and added z-index handling
-            >
-              <div className="absolute inset-0 transition-all duration-500 transform-gpu group-hover:scale-120">
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  fill
-                  className="object-contain transition-all duration-500 group-hover:brightness-[1.3]"
-                  priority
-                />
-              </div>
-            </div>
-          ))}
-        </div>
+        <ImageGrid />
       </div>
 
     </main>
