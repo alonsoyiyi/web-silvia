@@ -55,7 +55,31 @@ export default function PodcastPage() {
   const [currentTrack, setCurrentTrack] = useState(podcastList[0]);
   const [showPlaylist, setShowPlaylist] = useState(false);
   const [volume, setVolume] = useState(1);
+  const [randomPositions, setRandomPositions] = useState({});
   const audioRef = useRef(null);
+
+  // Generar posiciones aleatorias solo una vez al montar el componente
+  useEffect(() => {
+    const positions = {};
+    const totalCards = podcastList.length;
+    const arcAngle = 45; // Ángulo total del arco
+    const angleStep = arcAngle / (totalCards - 1);
+    const spreadWidth = 100; // Ancho de dispersión en porcentaje
+
+    podcastList.forEach((track, index) => {
+      const currentAngle = -arcAngle/2 + (angleStep * index);
+      // Calculamos un offset horizontal aleatorio para cada carta
+      const baseOffset = (index - (totalCards - 1) / 2) * (spreadWidth / totalCards);
+      
+      positions[track.id] = {
+        rotate: currentAngle,
+        x: baseOffset + Math.sin(currentAngle * Math.PI/180) * 80, // Aumentamos dispersión horizontal
+        y: -Math.abs(Math.cos(currentAngle * Math.PI/180) * 5), // Ligera curva hacia arriba
+        originX: baseOffset * 0.2 // Punto de origen variable para cada carta
+      };
+    });
+    setRandomPositions(positions);
+  }, []);
 
   const togglePlay = () => {
     if (isPlaying) {
@@ -135,45 +159,110 @@ export default function PodcastPage() {
         </div>
       </div>
 
-      {/* Segunda sección - Reproductor de Audio */}
-      <div className="w-full bg-black py-12 px-4">
-        <div className="max-w-4xl mx-auto bg-gray-900 rounded-xl p-6 shadow-2xl">
-          {/* Player */}
-          <div className="flex items-center gap-6">
-            {/* Imagen actual */}
-            <div className="relative w-24 h-24 rounded-lg overflow-hidden">
-              <Image
-                src={currentTrack.image}
-                alt={currentTrack.title}
-                fill
-                className="object-cover"
-              />
-            </div>
-
-            {/* Información y controles */}
-            <div className="flex-1">
-              <h3 className="text-white text-xl font-semibold">{currentTrack.title}</h3>
-              <p className="text-gray-400">{currentTrack.author}</p>
+      {/* Sección de cartas dispersas */}
+      <div className="w-full bg-black relative min-h-[600px] flex flex-col -mt-16">
+        <div className="relative flex-1 overflow-visible">
+          <div className="absolute left-1/2 bottom-0 w-full max-w-4xl h-[400px] -translate-x-1/2"> {/* Reducido height de 500px a 400px */}
+            {podcastList.map((track) => {
+              const isPlaying = track.id === currentTrack.id;
+              const pos = randomPositions[track.id] || { x: 0, y: 0, rotate: 0, originX: 0 };
               
-              {/* Controles */}
-              <div className="flex items-center gap-4 mt-4">
+              return (
+                <div
+                  key={track.id}
+                  onClick={() => {
+                    setCurrentTrack(track);
+                    setIsPlaying(true);
+                  }}
+                  className={`
+                    absolute
+                    transition-all duration-700 cursor-pointer
+                    origin-bottom
+                    ${isPlaying ? 'z-50' : 'hover:z-40'}
+                  `}
+                  style={{
+                    left: `calc(50% + ${pos.originX}%)`,
+                    transform: isPlaying 
+                      ? `translate(calc(-50% + ${pos.x}%), -15%) rotate(0deg) scale(1.05)` // Mantiene posición X, menos elevación Y
+                      : `translate(calc(-50% + ${pos.x}%), ${pos.y}%) rotate(${pos.rotate}deg) scale(1)`,
+                    transformOrigin: 'bottom center',
+                    zIndex: isPlaying ? 50 : track.id
+                  }}
+                >
+                  <div className={`
+                    relative w-[250px] h-[350px] rounded-lg overflow-hidden
+                    transition-transform duration-500
+                    ${isPlaying ? '' : 'hover:scale-105'}
+                    shadow-xl
+                  `}>
+                    <Image
+                      src={track.image}
+                      alt={track.title}
+                      fill
+                      className={`
+                        object-cover
+                        transition-all duration-500
+                        ${isPlaying ? 'brightness-100' : 'brightness-75'}
+                      `}
+                      priority={isPlaying}
+                    />
+                    {isPlaying && (
+                      <div className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center text-white">
+                        <h3 className="text-xl font-bold mb-2">{track.title}</h3>
+                        <p className="text-sm opacity-75">{track.author}</p>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+        
+        {/* Reproductor de Audio */}
+        <div className="w-full bg-black py-4 px-4"> {/* Reducido py-8 a py-4 */}
+          <div className="max-w-4xl mx-auto bg-[#c2c2c2] rounded-lg p-4 shadow-2xl">
+            {/* Player Container */}
+            <div className="flex items-center justify-between gap-4"> {/* Reduced gap */}
+              {/* Controles izquierdos */}
+              <div className="flex items-center gap-3">
+                {/* Controles izquierdos con iconos más pequeños */}
                 <button onClick={handlePrev}>
-                  <IoPlaySkipBack className="text-white text-2xl" />
+                  <IoPlaySkipBack className="text-black text-xl hover:opacity-70" />
                 </button>
                 <button onClick={togglePlay} className="focus:outline-none">
                   {isPlaying ? (
-                    <IoPauseCircle className="text-white text-5xl" />
+                    <IoPauseCircle className="text-black text-4xl hover:opacity-70" />
                   ) : (
-                    <IoPlayCircle className="text-white text-5xl" />
+                    <IoPlayCircle className="text-black text-4xl hover:opacity-70" />
                   )}
                 </button>
                 <button onClick={handleNext}>
-                  <IoPlaySkipForward className="text-white text-2xl" />
+                  <IoPlaySkipForward className="text-black text-xl hover:opacity-70" />
                 </button>
+              </div>
 
-                {/* Control de volumen */}
-                <div className="flex items-center gap-2 ml-6">
-                  <IoVolumeHigh className="text-white text-xl" />
+              {/* Información central */}
+              <div className="flex-1 bg-[#313131] rounded-lg px-4 py-2 flex items-center gap-3"> {/* Reduced padding and gap */}
+                <div className="relative w-12 h-12 rounded-lg overflow-hidden flex-shrink-0"> {/* Reduced size */}
+                  <Image
+                    src={currentTrack.image}
+                    alt={currentTrack.title}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-white font-semibold text-sm">{currentTrack.title}</h3> {/* Reduced text size */}
+                  <p className="text-gray-300 text-xs">{currentTrack.author}</p> {/* Reduced text size */}
+                </div>
+                <span className="text-white text-xs">{currentTrack.duration}</span> {/* Reduced text size */}
+              </div>
+
+              {/* Controles derechos */}
+              <div className="flex items-center gap-4"> {/* Reduced gap */}
+                <div className="flex items-center gap-2">
+                  <IoVolumeHigh className="text-black text-lg" /> {/* Reduced icon size */}
                   <input
                     type="range"
                     min="0"
@@ -184,55 +273,69 @@ export default function PodcastPage() {
                       setVolume(e.target.value);
                       audioRef.current.volume = e.target.value;
                     }}
-                    className="w-24"
+                    className="w-20" 
                   />
                 </div>
-
-                {/* Botón de playlist */}
                 <button 
                   onClick={() => setShowPlaylist(!showPlaylist)}
-                  className="ml-auto"
+                  className="hover:opacity-70"
                 >
-                  <IoMdList className="text-white text-2xl" />
+                  <IoMdList className="text-black text-xl" /> {/* Reduced icon size */}
                 </button>
               </div>
             </div>
-          </div>
 
-          {/* Playlist */}
-          {showPlaylist && (
-            <div className="mt-6 border-t border-gray-700 pt-4">
-              {podcastList.map((track) => (
-                <div
-                  key={track.id}
-                  onClick={() => setCurrentTrack(track)}
-                  className={`flex items-center gap-4 p-2 rounded-lg cursor-pointer hover:bg-gray-800 ${
-                    currentTrack.id === track.id ? 'bg-gray-800' : ''
-                  }`}
-                >
-                  <Image
-                    src={track.image}
-                    alt={track.title}
-                    width={48}
-                    height={48}
-                    className="rounded"
-                  />
-                  <div>
-                    <p className="text-white">{track.title}</p>
-                    <p className="text-gray-400 text-sm">{track.duration}</p>
+            {/* Playlist Modal */}
+            {showPlaylist && (
+              <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+                <div className="bg-[#313131] rounded-xl p-6 w-full max-w-md">
+                  <div className="flex justify-between items-center mb-4">
+                    <h3 className="text-white text-xl font-semibold">Lista de Reproducción</h3>
+                    <button 
+                      onClick={() => setShowPlaylist(false)}
+                      className="text-white hover:opacity-70"
+                    >
+                      ✕
+                    </button>
+                  </div>
+                  <div className="space-y-2 max-h-[60vh] overflow-y-auto">
+                    {podcastList.map((track) => (
+                      <div
+                        key={track.id}
+                        onClick={() => {
+                          setCurrentTrack(track);
+                          setShowPlaylist(false);
+                          setIsPlaying(true);
+                        }}
+                        className={`flex items-center gap-4 p-3 rounded-lg cursor-pointer hover:bg-gray-700 transition-colors
+                          ${currentTrack.id === track.id ? 'bg-gray-700' : ''}`}
+                      >
+                        <Image
+                          src={track.image}
+                          alt={track.title}
+                          width={48}
+                          height={48}
+                          className="rounded"
+                        />
+                        <div>
+                          <p className="text-white">{track.title}</p>
+                          <p className="text-gray-400 text-sm">{track.duration}</p>
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
-              ))}
-            </div>
-          )}
+              </div>
+            )}
 
-          {/* Audio element */}
-          <audio
-            ref={audioRef}
-            src={currentTrack.audioSrc}
-            onEnded={handleNext}
-            className="hidden"
-          />
+            {/* Audio element */}
+            <audio
+              ref={audioRef}
+              src={currentTrack.audioSrc}
+              onEnded={handleNext}
+              className="hidden"
+            />
+          </div>
         </div>
       </div>
     </main>
