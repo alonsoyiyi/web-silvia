@@ -8,7 +8,7 @@ export default function DocumentalPage() {
       <div
         className="w-full aspect-[16/9] relative flex flex-col items-start py-12 px-20" // reduced py-20 to py-12
         style={{
-          backgroundImage: "url('/images/fondotwiter.webp')",
+          backgroundImage: "url('/images/fondojuego2.webp')",
           backgroundSize: '100% 100%',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
@@ -59,14 +59,19 @@ export default function DocumentalPage() {
         </div>
       </div>
 
-    
-      
-
       {/* Nueva sección - Imagen del juego */}
-      <div className="w-full bg-black -mt-28">
+      <div 
+        className="w-full bg-black -mt-28"
+        style={{
+          backgroundImage: "url('/images/fondojuegob.webp')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
         <div className="max-w-7xl mx-auto px-8">
           <Link 
-            href="https://brujiaventuras-j6jg.vercel.app/" // Aquí puedes agregar el enlace cuando lo tengas
+            href="https://brujiaventuras-j6jg.vercel.app/"
             className="block relative h-[600px] w-full hover:scale-105 transition-all duration-500"
           >
             <Image

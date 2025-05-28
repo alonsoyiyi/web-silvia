@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import AudioController from "./components/AudioController";
+import SmokeEffect from "./components/SmokeEffect";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -24,6 +25,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <SmokeEffect />
         {children}
         <AudioController />
       </body>
