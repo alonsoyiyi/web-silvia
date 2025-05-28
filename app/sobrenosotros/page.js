@@ -72,8 +72,16 @@ const teamData = [
 ];
 
 const CarouselItem = ({ person, index, currentIndex, totalItems, onClick }) => {
-	let position = ((index - currentIndex + totalItems) % totalItems) - Math.floor(totalItems / 2);
+	// Modificar el cálculo de la posición
+	let position = index - currentIndex;
 	
+	// Ajustar para mantener el ciclo más suave
+	if (position > Math.floor(totalItems / 2)) {
+		position -= totalItems;
+	} else if (position < -Math.floor(totalItems / 2)) {
+		position += totalItems;
+	}
+
 	const variants = {
 		center: {
 			scale: 1,
@@ -158,25 +166,28 @@ const PersonModal = ({ person, onClose }) => {
 						className="object-cover rounded-lg"
 					/>
 				</div>
-				<h2 className="text-2xl font-bold text-white mb-2">{person.name}</h2>
-				<p className="text-xl text-white/80 mb-4">{person.role}</p>
-				<p className="text-white/60">{person.bio}</p>
+				<div className="text-center">
+					<h2 className="text-2xl font-bold text-white mb-2">{person.name}</h2>
+					<p className="text-xl text-white/80">{person.role}</p>
+				</div>
 			</motion.div>
 		</motion.div>
 	);
 };
 
 export default function View7() {
-	const [currentIndex, setCurrentIndex] = useState(0);
-	const [selectedPerson, setSelectedPerson] = useState(null);
+	// Initialize currentIndex to 0 (which corresponds to id: 1)
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [selectedPerson, setSelectedPerson] = useState(null);
 
-	const handleNext = () => {
-		setCurrentIndex((prev) => (prev + 1) % teamData.length);
-	};
+    // Update handlers to maintain sequential order
+    const handleNext = () => {
+        setCurrentIndex((prev) => (prev + 1) % teamData.length);
+    };
 
-	const handlePrev = () => {
-		setCurrentIndex((prev) => (prev - 1 + teamData.length) % teamData.length);
-	};
+    const handlePrev = () => {
+        setCurrentIndex((prev) => (prev - 1 + teamData.length) % teamData.length);
+    };
 
 	return (
 		<div className="min-h-screen w-full flex flex-col items-center justify-center bg-gray-900 relative">
