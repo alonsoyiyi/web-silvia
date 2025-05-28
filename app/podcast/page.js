@@ -135,7 +135,7 @@ export default function PodcastPage() {
         {/* Contenido central - moved up */}
         <div className="flex flex-col items-start gap-8 text-white mt-16">
           <h1 className="text-6xl text-left">
-            Sussuros <br /> de una Sombra
+            Susurros <br /> de una Sombra
           </h1>
 
           <button className="px-4 py-1 bg-white text-black rounded-full hover:scale-105 transition-transform text-lg flex items-center gap-2">
