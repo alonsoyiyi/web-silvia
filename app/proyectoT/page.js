@@ -246,7 +246,7 @@ export default function PodcastPage() {
       <div
         className="w-full aspect-[16/9] relative flex flex-col items-start py-12 px-20"
         style={{
-          backgroundImage: "url('/images/fondopodcast.webp')",
+          backgroundImage: "url('/images/fondoproyectot.webp')",
           backgroundSize: '100% 100%',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
