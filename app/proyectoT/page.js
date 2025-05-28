@@ -6,16 +6,22 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const specialists = [
   {
-    id: 1,
-    name: 'Gerardo Menacho',
-    image: '/images/GERARDO-MENACHO.webp',
-    role: 'Escéptico'
+    id: 6,
+    name: 'Milagros Albarracín',
+    image: '/images/MILAGROS-ALBARRACIN.webp',
+    role: 'Médium y psíquica'
   },
   {
     id: 2,
     name: 'Helen Alejandro',
     image: '/images/HELEN-ALEJANDRO.webp',
     role: 'Afectada por brujería'
+  },
+  {
+    id: 1,
+    name: 'Gerardo Menacho',
+    image: '/images/GERARDO-MENACHO.webp',
+    role: 'Escéptico'
   },
   {
     id: 3,
@@ -34,12 +40,6 @@ const specialists = [
     name: 'Luis Felipe Pardo',
     image: '/images/LUIS-FELIPE-PARDO.webp',
     role: 'Cura'
-  },
-  {
-    id: 6,
-    name: 'Milagros Albarracín',
-    image: '/images/MILAGROS-ALBARRACIN.webp',
-    role: 'Médium y psíquica'
   },
   {
     id: 7,
@@ -135,7 +135,7 @@ const slideVariants = {
 };
 
 const Carousel = () => {
-    const [currentIndex, setCurrentIndex] = useState(2);
+    const [currentIndex, setCurrentIndex] = useState(0);
     const [direction, setDirection] = useState(0);
 
     const getVisibleIndices = () => {
@@ -291,7 +291,7 @@ export default function PodcastPage() {
         {/* Texto inferior */}
         <div className="text-white w-full mt-auto mb-12">
           <h2 className="text-3xl mb-4 text-left">Sobre el proyecto</h2>
-          <p className="text-l text-left max-w-4xl">
+          <p className="text-l text-left w-full">
             La historia de Entre sombras y luces te sumerge en un viaje entre lo místico y lo racional. En este documental transmedial, explortamos cómo la magia blanca y negra sigue presente en la vida cotidiana de muchas personas, generando creencias, dudas y debates sobre su impacto en la sociedad moderna. A o largo de los cinco capítulos, viajamos entre los misterios, presentando a quienes la practican, la creen y la cuestionan.
           </p>
         </div>
