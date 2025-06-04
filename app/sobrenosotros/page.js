@@ -7,19 +7,35 @@ import { IoChevronBackOutline, IoChevronForwardOutline } from 'react-icons/io5';
 
 const teamData = [
 	{
-		id: 1,
-		image: '/team/ashly.webp',
-		name: 'Ashly Paraizaman',
-		role: 'Productora',
-		bio: 'Líder visionario con más de 8 años de experiencia en proyectos transmedia. Apasionado por contar historias que conecten con las personas.',
-	},
-	{
 		id: 2,
 		image: '/team/silvia.webp',
 		name: 'Silvia Malca',
-		role: 'Directora',
+		role: 'Dirección',
 		bio: 'Especialista en gestión de proyectos audiovisuales con un enfoque en contenido documental y narrativas innovadoras.',
 	},
+	{
+		id: 1,
+		image: '/team/ashly.webp',
+		name: 'Ashly Paraizaman',
+		role: 'Producción',
+		bio: 'Líder visionario con más de 8 años de experiencia en proyectos transmedia. Apasionado por contar historias que conecten con las personas.',
+	},
+	{
+		id: 7,
+		image: '/team/helen.webp',
+		name: 'Helen Alejandro',
+		role: 'Asistente de Producción',
+		bio: 'Creador de mundos virtuales y experiencias visuales que desafían la imaginación.',
+	},
+	
+	{
+		id: 9,
+		image: '/team/deoux.webp',
+		name: 'Deoux Cordero',
+		role: 'Dirección de Arte',
+		bio: 'Maestro en el arte de dar ritmo y vida a las historias a través del montaje.',
+	},
+	
 	{
 		id: 3,
 		image: '/team/luis.webp',
@@ -38,7 +54,7 @@ const teamData = [
 		id: 5,
 		image: '/team/kiara.webp',
 		name: 'Kiara Porras',
-		role: 'Cámara',
+		role: 'Cámaras',
 		bio: 'Programador creativo especializado en crear experiencias interactivas que desafían los límites de la narrativa tradicional.',
 	},
 	{
@@ -48,26 +64,13 @@ const teamData = [
 		role: 'Edición',
 		bio: 'Escritora apasionada por entrelazar realidad y ficción en historias que cautivan y transforman.',
 	},
-	{
-		id: 7,
-		image: '/team/helen.webp',
-		name: 'Helen Alejandro',
-		role: 'Asistente de Producción',
-		bio: 'Creador de mundos virtuales y experiencias visuales que desafían la imaginación.',
-	},
+	
 	{
 		id: 8,
 		image: '/team/gonzalo.webp',
 		name: 'Gonzalo Verástegui',
 		role: 'Sonido',
 		bio: 'Artista visual con una visión única para crear atmósferas y estéticas memorables.',
-	},
-	{
-		id: 9,
-		image: '/team/deoux.webp',
-		name: 'Deoux Cordero',
-		role: 'Direcctora de Arte',
-		bio: 'Maestro en el arte de dar ritmo y vida a las historias a través del montaje.',
 	}
 ];
 
