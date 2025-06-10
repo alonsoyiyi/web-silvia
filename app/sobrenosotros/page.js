@@ -179,11 +179,9 @@ const PersonModal = ({ person, onClose }) => {
 };
 
 export default function View7() {
-	// Initialize currentIndex to 0 (which corresponds to id: 1)
     const [currentIndex, setCurrentIndex] = useState(0);
     const [selectedPerson, setSelectedPerson] = useState(null);
 
-    // Update handlers to maintain sequential order
     const handleNext = () => {
         setCurrentIndex((prev) => (prev + 1) % teamData.length);
     };
@@ -193,15 +191,81 @@ export default function View7() {
     };
 
 	return (
-		<div className="min-h-screen w-full flex flex-col items-center justify-center bg-gray-900 relative">
+		<div 
+            className="min-h-screen w-full flex flex-col bg-black relative"
+            style={{
+                backgroundImage: "url('/images/smoke-conocenos.webp')",
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat'
+            }}
+        >
 			<Link 
 				href="/"
-				className="absolute top-10 left-10 px-6 py-2 bg-white text-black font-semibold rounded-full hover:scale-105 transition-transform"
+				className="px-6 py-2 bg-black text-white font-semibold rounded-full hover:scale-105 transition-transform inline-flex items-center gap-2 absolute top-10 left-10" 
 			>
+				<Image
+					src="/images/ojovolver.svg"
+					alt="Volver icon"
+					width={32}
+					height={32}
+					className="brightness-0 invert"
+				/>
 				Volver
 			</Link>
 
-			<div className="relative w-full h-[600px] flex items-center justify-center mt-20">
+			{/* Nueva sección de información  */}
+			<div className="w-full max-w-7xl mx-auto px-8 py-20 mt-20 flex items-start gap-12">
+				<div className="w-1/2 space-y-12">
+					<h1 className="text-6xl text-white font-bold">
+						Productora <br /> Audiovisual
+					</h1>
+					
+					<div className="space-y-6"> {/* Reduced from space-y-8 */}
+    <div className="bg-[#cccccc] rounded-[20px] p-5"> {/* Reduced from p-6 */}
+        <h2 className="text-xl text-white font-semibold mb-3 [text-shadow:_2px_2px_2px_rgb(0_0_0_/_50%)]">
+            MISIÓN
+        </h2>
+        <p className="text-base text-black/80 leading-snug">
+            Despertamos la creatividad para convertir las ideas de nuestros cliente en historias que conectan profundamente y crean vinculos duraderos.
+        </p>
+    </div>
+    
+    <div className="bg-[#cccccc] rounded-[20px] p-5"> {/* Reduced from p-6 */}
+        <h2 className="text-xl text-white font-semibold mb-3 [text-shadow:_2px_2px_2px_rgb(0_0_0_/_50%)]">
+            VISIÓN
+        </h2>
+        <p className="text-base text-black/80 leading-snug">
+            Somos una productora audivisial que destaca por innovar y crear contenidos que no solo narran, sino que también inspiran y transforman. Conectamos a personas y marcas con narrativas visuales.
+        </p>
+    </div>
+</div>
+				</div>
+
+				<div className="w-1/2 relative flex items-center justify-center">
+					<div className="relative w-[80%] aspect-square"> {/* Reduced from 100% to 70% */}
+						<Image
+							src="/images/logo_grande.webp"
+							alt="Logo Productora"
+							fill
+							className="object-contain"
+						/>
+					</div>
+				</div>
+			</div>
+
+			{/* Nueva sección de equipo */}
+<div className="w-full max-w-7xl mx-auto px-8 py-12">
+    <h2 className="text-4xl text-white font-semibold mb-4 text-left">
+        Conoce al equipo
+    </h2>
+    <p className="text-xl text-white/80 text-left">
+        Descubre a nuestro equipo creativo. cada uno aportando talento y pasión para hacer realidad historias que conectan.
+    </p>
+</div>
+
+			{/* Slider existente */}
+			<div className="relative w-full h-[600px] flex items-center justify-center">
 				<div className="relative w-[80%] h-full">
 					{teamData.map((person, index) => (
 						<CarouselItem
