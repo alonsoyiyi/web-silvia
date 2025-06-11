@@ -10,22 +10,22 @@ const teamData = [
 		id: 2,
 		image: '/team/silvia.webp',
 		name: 'Silvia Malca',
-		role: 'Dirección',
-		bio: 'Especialista en gestión de proyectos audiovisuales con un enfoque en contenido documental y narrativas innovadoras.',
+		role: 'Directora, Camarógrafa, Editora y Encargada de Difusión',
+		bio: 'Silvia es el motor creativo detrás del proyecto. Su visión sensible y crítica se refleja en cada etapa del proceso. Su versatilidad le permite asumir diversos roles, desde la dirección hasta la edición y difusión, siempre con una búsqueda narrativa clara y coherente. Su capacidad para integrar la estética con el mensaje hace de su trabajo una pieza clave en la identidad del proyecto.',
 	},
 	{
 		id: 1,
 		image: '/team/ashly.webp',
 		name: 'Ashly Paraizaman',
 		role: 'Producción',
-		bio: 'Líder visionario con más de 8 años de experiencia en proyectos transmedia. Apasionado por contar historias que conecten con las personas.',
+		bio: 'Ashly es el eje orgánico del equipo. Con una mente estratégica y una actitud resolutiva, se encarga de que cada etapa del proyecto avance de manera fluida. Su habilidad para coordinar equipos humanos y recursos logísticos es fundamental para el desarrollo fluido del proyecto, manteniendo siempre la energía y la motivación del grupo.',
 	},
 	{
 		id: 7,
 		image: '/team/helen.webp',
 		name: 'Helen Alejandro',
-		role: 'Asistente de Producción',
-		bio: 'Creador de mundos virtuales y experiencias visuales que desafían la imaginación.',
+		role: 'Asistente de producción ',
+		bio: 'Helen es una presencia constante y confiable en el set, se mueve entre tareas con agilidad y compromiso. Su disposición y actitud proactiva la convierten en una pieza esencial para el funcionamiento del equipo. Siempre atenta, gestiona tiempos y necesidades con eficacia, manteniendo un ambiente armonioso y resolutivo.',
 	},
 	
 	{
@@ -33,36 +33,36 @@ const teamData = [
 		image: '/team/deoux.webp',
 		name: 'Deoux Cordero',
 		role: 'Dirección de Arte',
-		bio: 'Maestro en el arte de dar ritmo y vida a las historias a través del montaje.',
+		bio: 'Deoux construye la identidad visual del proyecto desde los objetos, colores y texturas. Su enfoque simbólico y estético le da profundidad a cada espacio representado, potenciando la narrativa desde lo visual. ',
 	},
 	
 	{
 		id: 3,
 		image: '/team/luis.webp',
 		name: 'Luis Olascoaga',
-		role: 'Iluminación',
-		bio: 'Fotógrafo premiado con un ojo único para capturar momentos mágicos y transformarlos en historias visuales impactantes.',
+		role: 'Iluminación y Cámara ',
+		bio: 'Luis aporta precisión técnica y una mirada estética sólida. Su experiencia en el manejo de la luz y la cámara le permite construir imágenes cargadas de atmósfera, siempre al servicio del relato. Minucioso y comprometido, trabaja cada plano con pasión y profesionalismo.',
 	},
 	{
 		id: 4,
 		image: '/team/gerardo.webp',
 		name: 'Gerardo Menacho',
-		role: 'Iluminación',
-		bio: 'Creadora de paisajes sonoros inmersivos que transportan a la audiencia a mundos extraordinarios.',
+		role: 'Iluminación y Edición',
+		bio: 'Gerardo combina sensibilidad visual con un enfoque técnico riguroso. En el área de iluminación, aporta dramatismo y equilibrio a cada escena; en la postproducción, encuentra el ritmo justo del relato. Su mirada analítica y estética lo convierte en un pilar silencioso pero potente del equipo.',
 	},
 	{
 		id: 5,
 		image: '/team/kiara.webp',
 		name: 'Kiara Porras',
 		role: 'Cámaras',
-		bio: 'Programador creativo especializado en crear experiencias interactivas que desafían los límites de la narrativa tradicional.',
+		bio: 'Kiara registra tanto lo visible como lo audible. Su trabajo como camarógrafa se caracteriza por planos íntimos y expresivos, mientras que en el sonido directo captura con precisión la textura de cada momento. Su compromiso y capacidad de adaptación enriquecen cada etapa del proceso.',
 	},
 	{
 		id: 6,
 		image: '/team/brenda.webp',
 		name: 'Brenda Lazo',
-		role: 'Edición',
-		bio: 'Escritora apasionada por entrelazar realidad y ficción en historias que cautivan y transforman.',
+		role: 'Sonido y Edición',
+		bio: 'Brenda escucha el proyecto desde adentro. Con una profunda sensibilidad hacia lo sonoro, se encarga de capturar y trabajar el audio con precisión narrativa. Además, desde la edición, aporta una mirada crítica que da cohesión y ritmo a la historia. Su pasión por los relatos inmersivos es el motor que impulsa su trabajo.',
 	},
 	
 	{
@@ -70,7 +70,15 @@ const teamData = [
 		image: '/team/gonzalo.webp',
 		name: 'Gonzalo Verástegui',
 		role: 'Sonido',
-		bio: 'Artista visual con una visión única para crear atmósferas y estéticas memorables.',
+		bio: 'Gonzalo trabaja el sonido con meticulosidad y sensibilidad. Su capacidad para leer los climas del rodaje y traducirlos en un registro sonoro claro y envolvente, refuerza la atmósfera emocional de cada escena. Detallista y concentrado, aporta una dimensión fundamental al lenguaje del proyecto.',
+	},
+	
+	{
+		id: 10,
+		image: '/team/JOAQUIN.webp',
+		name: 'Joaquin Uriarte',
+		role: 'Asistente de producción',
+		bio: 'Su capacidad para adaptarse a diferentes demandas y anticipar necesidades facilita el desarrollo de cada jornada. Con iniciativa y empatía, contribuye a que el equipo funcione como una verdadera red colaborativa.',
 	}
 ];
 
