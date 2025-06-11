@@ -148,6 +148,17 @@ const CarouselItem = ({ person, index, currentIndex, totalItems, onClick }) => {
 					fill
 					className="object-cover"
 				/>
+				{/* New overlay for text that only shows when centered */}
+				{getVariant() === 'center' && (
+					<div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent text-center">
+						<h3 className="text-2xl font-bold text-white mb-2 [text-shadow:_2px_2px_4px_rgba(0,0,0,0.7)]">
+							{person.name}
+						</h3>
+						<p className="text-lg text-white/90 [text-shadow:_1px_1px_2px_rgba(0,0,0,0.7)]">
+							{person.role}
+						</p>
+					</div>
+				)}
 			</div>
 		</motion.div>
 	);
