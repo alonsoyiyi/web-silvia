@@ -165,36 +165,39 @@ const CarouselItem = ({ person, index, currentIndex, totalItems, onClick }) => {
 };
 
 const PersonModal = ({ person, onClose }) => {
-	return (
-		<motion.div
-			initial={{ opacity: 0 }}
-			animate={{ opacity: 1 }}
-			exit={{ opacity: 0 }}
-			className="fixed inset-0 bg-black/70 flex items-center justify-center z-50"
-			onClick={onClose}
-		>
-			<motion.div
-				initial={{ scale: 0.5 }}
-				animate={{ scale: 1 }}
-				exit={{ scale: 0.5 }}
-				className="relative w-[80%] max-w-2xl bg-black/80 p-8 rounded-lg"
-				onClick={e => e.stopPropagation()}
-			>
-				<div className="relative w-full h-[400px] mb-4">
-					<Image
-						src={person.image}
-						alt={person.name}
-						fill
-						className="object-cover rounded-lg"
-					/>
-				</div>
-				<div className="text-center">
-					<h2 className="text-2xl font-bold text-white mb-2">{person.name}</h2>
-					<p className="text-xl text-white/80">{person.role}</p>
-				</div>
-			</motion.div>
-		</motion.div>
-	);
+    return (
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/70 flex items-center justify-center z-50"
+            onClick={onClose}
+        >
+            <motion.div
+                initial={{ scale: 0.5 }}
+                animate={{ scale: 1 }}
+                exit={{ scale: 0.5 }}
+                className="relative w-[50%] max-w-xl bg-black/80 p-8 rounded-lg" // Changed from max-w-2xl to max-w-xl
+                onClick={e => e.stopPropagation()}
+            >
+                <div className="relative w-[50%] aspect-[4/5] mb-6 mx-auto"> {/* Added w-[50%] and mx-auto */}
+                    <Image
+                        src={person.image}
+                        alt={person.name}
+                        fill
+                        className="object-contain rounded-lg"
+                    />
+                </div>
+                <div className="space-y-4 text-center"> {/* Added spacing between elements */}
+                    <h2 className="text-2xl font-bold text-white">{person.name}</h2>
+                    <p className="text-lg text-white/80 mb-4">{person.role}</p>
+                    <p className="text-m text-white/70  leading-relaxed">
+                        {person.bio}
+                    </p>
+                </div>
+            </motion.div>
+        </motion.div>
+    );
 };
 
 export default function View7() {
