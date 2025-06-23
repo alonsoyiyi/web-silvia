@@ -275,17 +275,21 @@ export default function PodcastPage() {
           <h1 className="text-6xl text-left">
             Nuestro proyecto <br />Transmedial
           </h1>
-
-          <button className="px-4 py-1 bg-white text-black rounded-full hover:scale-105 transition-transform text-lg flex items-center gap-2">
-            <Image
-              src="/images/videoY.svg"
-              alt="Video icon"
-              width={32}
-              height={32}
-              className="brightness-0"
-            />
-            Ver más
-          </button>
+  <a 
+                        href="https://www.youtube.com/@Entresombrasyluces-i7t"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-4 py-1 bg-white text-black rounded-full hover:scale-105 transition-transform text-lg cursor-pointer"
+                    >
+                        <Image
+                            src="/images/instagram-svgrepo-com.svg"
+                            alt="Instagram icon"
+                            width={32}
+                            height={32}
+                            className="brightness-0"
+                        />
+                        Ver más
+                    </a>
         </div>
 
         {/* Texto inferior */}

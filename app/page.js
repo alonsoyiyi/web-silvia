@@ -67,7 +67,7 @@ export default function Home() {
             </div>
 
             {/* Links - ajustando tamaño y posición */}
-            <div className="w-2/3 flex items-center justify-end gap-20">
+            <div className="w-2/3 flex items-center justify-between"> {/* Cambiado de justify-end y eliminado gap-20 */}
               <Link 
                 href="/proyectoT" 
                 className="text-white hover:text-gray-300 transition-colors text-2xl"
@@ -85,6 +85,12 @@ export default function Home() {
                 className="text-white hover:text-gray-300 transition-colors text-2xl"
               >
                 Sobre Nosotros
+              </Link>
+              <Link 
+                href="/insta" 
+                className="text-white hover:text-gray-300 transition-colors text-2xl"
+              >Instagram
+                
               </Link>
             </div>
           </div>
