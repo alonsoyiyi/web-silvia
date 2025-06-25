@@ -10,13 +10,13 @@ const teamData = [
 		id: 2,
 		image: '/team/silvia.webp',
 		name: 'Silvia Malca',
-		role: 'Directora, Camarógrafa, Editora y Encargada de Difusión',
+		role: 'Directora y Editora',
 		bio: 'Silvia es el motor creativo detrás del proyecto. Su visión sensible y crítica se refleja en cada etapa del proceso. Su versatilidad le permite asumir diversos roles, desde la dirección hasta la edición y difusión, siempre con una búsqueda narrativa clara y coherente. Su capacidad para integrar la estética con el mensaje hace de su trabajo una pieza clave en la identidad del proyecto.',
 	},
 	{
 		id: 1,
 		image: '/team/ashly.webp',
-		name: 'Ashly Paraizaman',
+		name: 'Ashly Pairazaman',
 		role: 'Producción',
 		bio: 'Ashly es el eje orgánico del equipo. Con una mente estratégica y una actitud resolutiva, se encarga de que cada etapa del proyecto avance de manera fluida. Su habilidad para coordinar equipos humanos y recursos logísticos es fundamental para el desarrollo fluido del proyecto, manteniendo siempre la energía y la motivación del grupo.',
 	},
@@ -82,7 +82,7 @@ const teamData = [
 	}
 ];
 
-const CarouselItem = ({ person, index, currentIndex, totalItems, onClick }) => {
+const CarouselItem = ({ person, index, currentIndex, totalItems, onClick, handleNext, handlePrev }) => {
 	// Modificar el cálculo de la posición
 	let position = index - currentIndex;
 	
@@ -127,18 +127,33 @@ const CarouselItem = ({ person, index, currentIndex, totalItems, onClick }) => {
 		return 'hidden';
 	};
 
+	const handleClick = () => {
+		const variant = getVariant();
+		if (variant === 'center') {
+			onClick(person);
+		} else if (variant === 'adjacent') {
+			// Si es adyacente, calculamos si es el siguiente o anterior
+			const diff = index - currentIndex;
+			if (diff === 1 || diff === -(totalItems - 1)) {
+				handleNext();
+			} else if (diff === -1 || diff === (totalItems - 1)) {
+				handlePrev();
+			}
+		}
+	};
+
 	return (
 		<motion.div
 			className="absolute top-0 left-0 right-0 bottom-0"
 			initial={false}
 			animate={variants[getVariant()]}
 			transition={{ duration: 0.5 }}
-			onClick={() => getVariant() === 'center' && onClick(person)}
+			onClick={handleClick}
 			style={{ 
 				width: '400px',
 				height: '500px',
 				margin: '0 auto',
-				cursor: getVariant() === 'center' ? 'pointer' : 'default'
+				cursor: getVariant() === 'hidden' ? 'default' : 'pointer' // Cambiado para que los adyacentes también tengan cursor pointer
 			}}
 		>
 			<div className="relative w-full h-full rounded-lg overflow-hidden">
@@ -297,6 +312,8 @@ export default function View7() {
 							currentIndex={currentIndex}
 							totalItems={teamData.length}
 							onClick={setSelectedPerson}
+							handleNext={handleNext}  // Añadido
+							handlePrev={handlePrev}  // Añadido
 						/>
 					))}
 				</div>
