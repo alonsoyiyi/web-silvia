@@ -230,7 +230,7 @@ export default function Carousel({ onSlideChange }) {
                     })}
                 </AnimatePresence>
 
-                {/* Texto Flotante - Completamente separado de los slides */}
+                {/* Texto Flotante */}
                 <AnimatePresence mode="wait" initial={false}>
                     <motion.div
                         key={`content-${currentIndex}`}
@@ -241,14 +241,16 @@ export default function Carousel({ onSlideChange }) {
                         transition={{ duration: 0.3 }}
                         className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-screen max-w-[1200px] z-50"
                     >
-                        <div className="text-white text-center">
-                            <h2 className="text-8xl font-bold mb-8 text-white drop-shadow-lg">
-                                {carouselData[currentIndex].title}
-                            </h2>
-                            <p className="text-3xl text-white drop-shadow-lg mx-auto">
-                                {carouselData[currentIndex].content}
-                            </p>
-                        </div>
+                        <Link href={carouselData[currentIndex].link} className="block">
+                            <div className="text-white text-center cursor-pointer hover:scale-105 transition-transform">
+                                <h2 className="text-8xl font-bold mb-8 text-white drop-shadow-lg pointer-events-none">
+                                    {carouselData[currentIndex].title}
+                                </h2>
+                                <p className="text-3xl text-white drop-shadow-lg mx-auto pointer-events-none">
+                                    {carouselData[currentIndex].content}
+                                </p>
+                            </div>
+                        </Link>
                     </motion.div>
                 </AnimatePresence>
             </div>
