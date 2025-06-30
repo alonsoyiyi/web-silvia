@@ -6,7 +6,7 @@ import Image from 'next/image';
 const slides = [
   {
     id: 1,
-    image: '/images/despertarinvisible.webp',
+    image: '/images/balanza.webp',
     title: 'El Despertar \n de lo Invisible'
   },
   {
@@ -16,13 +16,13 @@ const slides = [
   },
   {
     id: 3,
-    image: '/images/luzcura.webp',
+    image: '/images/brujita.webp',
     title: 'La Luz \n que cura'
   },
   {
     id: 4,
-    image: '/images/herenciaoculto.webp',
-    title: 'Herencia \n de lo Oculto'
+    image: '/images/cruz.webp',
+    title: 'El otro lado \n de la Creencia'
   }
 ];
 
