@@ -239,7 +239,7 @@ export default function Carousel({ onSlideChange }) {
                         animate="center"
                         exit="exit"
                         transition={{ duration: 0.3 }}
-                        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-screen max-w-[1200px] z-50"
+                        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] z-50" // Changed from w-screen max-w-[1200px] to w-[800px]
                     >
                         <Link href={carouselData[currentIndex].link} className="block">
                             <div className="text-white text-center cursor-pointer hover:scale-105 transition-transform">

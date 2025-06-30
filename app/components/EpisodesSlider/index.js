@@ -27,64 +27,70 @@ const slides = [
 ];
 
 export default function EpisodesSlider() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const handleSlideClick = (index) => {
-    setCurrentIndex(index);
-  };
-
+  const [activeIndex, setActiveIndex] = useState(0);
+  
   const getVisibleSlides = () => {
-    const slidesCount = slides.length;
-    return [
-      (currentIndex - 1 + slidesCount) % slidesCount,
-      currentIndex,
-      (currentIndex + 1) % slidesCount
-    ];
+    const prev = activeIndex === 0 ? slides.length - 1 : activeIndex - 1;
+    const next = activeIndex === slides.length - 1 ? 0 : activeIndex + 1;
+    return [prev, activeIndex, next];
   };
 
   return (
-    <div className="w-full overflow-hidden bg-black py-12 -mt-20">
-      <div className="flex justify-center items-center gap-8 max-w-[85vw] mx-auto"> {/* Aumentado a 85vw */}
-        {getVisibleSlides().map((slideIndex, position) => (
-          <div
-            key={slides[slideIndex].id}
-            onClick={() => position !== 1 && handleSlideClick(slideIndex)}
-            className={`
-              transition-all duration-500 cursor-pointer shrink-0
-              ${position === 1 
-                ? 'w-[600px] h-[400px] opacity-100' // Aumentado a 600px
-                : 'w-[300px] h-[400px] opacity-50'  // Aumentado a 300px
-              }
-            `}
-          >
-            <div className="relative w-full h-full overflow-hidden">
-              <Image
-                src={slides[slideIndex].image}
-                alt={slides[slideIndex].title}
-                fill
-                className="object-cover"
-                priority={position === 1}
-              />
-              {position === 1 && (
-                <div className="absolute inset-0 flex flex-col items-start justify-center bg-black/50 text-white pl-10">
-                  <h3 className="text-6xl font-bold mb-6 whitespace-pre-line text-left">
-                    {slides[slideIndex].title}
-                  </h3>
-                  <button className="px-4 py-2 bg-white text-black rounded-full hover:scale-105 transition-transform flex items-center gap-2">
-                    <Image 
-                      src="/images/play.svg"
-                      alt="Play icon"
-                      width={24}
-                      height={24}
-                      className="brightness-0"
-                    />
-                    Ver video
-                  </button>
+    <div className="w-full py-12 -mt-20 relative overflow-hidden">
+      <div className="max-w-[1200px] h-[500px] mx-auto relative">
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="relative w-full h-full">
+            {getVisibleSlides().map((slideIndex, position) => (
+              <div
+                key={slides[slideIndex].id}
+                onClick={() => position !== 1 && setActiveIndex(slideIndex)}
+                className={`
+                  absolute top-0 left-1/2
+                  transition-all duration-700 ease-in-out cursor-pointer
+                  ${position === 1 ? 'z-20' : 'z-10'}
+                `}
+                style={{
+                  transform: `translateX(${position === 0 ? '-180%' : position === 1 ? '-50%' : '80%'})`, // Increased spacing
+                }}
+              >
+                <div className={`
+                  relative overflow-hidden rounded-lg transition-all duration-700
+                  ${position === 1 
+                    ? 'w-[550px] h-[500px] opacity-100' // Reduced from 800px to 700px
+                    : 'w-[300px] h-[400px] opacity-60 hover:opacity-80 translate-y-12'} // Increased from opacity-40 to opacity-60
+                `}>
+                  <Image
+                    src={slides[slideIndex].image}
+                    alt={slides[slideIndex].title}
+                    fill
+                    className={`
+                      transition-all duration-500
+                      ${position === 1 ? 'object-contain brightness-110' : 'object-cover brightness-75'} // Added brightness-75
+                    `}
+                    priority={position === 1}
+                  />
+                  {position === 1 && (
+                    <div className="absolute inset-0 flex flex-col items-start justify-center bg-black/50 text-white pl-16">
+                      <h3 className="text-6xl font-bold mb-6 whitespace-pre-line text-left">
+                        {slides[slideIndex].title}
+                      </h3>
+                      <button className="px-4 py-2 bg-white text-black rounded-full hover:scale-105 transition-transform flex items-center gap-2">
+                        <Image 
+                          src="/images/play.svg"
+                          alt="Play icon"
+                          width={24}
+                          height={24}
+                          className="brightness-0"
+                        />
+                        Ver video
+                      </button>
+                    </div>
+                  )}
                 </div>
-              )}
-            </div>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
     </div>
   );

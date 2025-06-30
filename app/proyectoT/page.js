@@ -46,6 +46,12 @@ const specialists = [
     name: 'Angela Alejos',
     image: '/images/ANGELA-ALEJOS.webp',
     role: 'Chamana'
+  },
+  {
+    id: 8,
+    name: 'Oscar Miranda',
+    image: '/images/oscar.jpeg',
+    role: 'Investigador de lo oculto'
   }
 ];
 

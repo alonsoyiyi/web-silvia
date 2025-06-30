@@ -67,14 +67,14 @@ export default function PodcastPage() {
     const spreadWidth = 100; // Ancho de dispersión en porcentaje
 
     podcastList.forEach((track, index) => {
-      const currentAngle = -arcAngle/2 + (angleStep * index);
+      const currentAngle = -arcAngle / 2 + (angleStep * index);
       // Calculamos un offset horizontal aleatorio para cada carta
       const baseOffset = (index - (totalCards - 1) / 2) * (spreadWidth / totalCards);
-      
+
       positions[track.id] = {
         rotate: currentAngle,
-        x: baseOffset + Math.sin(currentAngle * Math.PI/180) * 80, // Aumentamos dispersión horizontal
-        y: -Math.abs(Math.cos(currentAngle * Math.PI/180) * 5), // Ligera curva hacia arriba
+        x: baseOffset + Math.sin(currentAngle * Math.PI / 180) * 80, // Aumentamos dispersión horizontal
+        y: -Math.abs(Math.cos(currentAngle * Math.PI / 180) * 5), // Ligera curva hacia arriba
         originX: baseOffset * 0.2 // Punto de origen variable para cada carta
       };
     });
@@ -137,24 +137,28 @@ export default function PodcastPage() {
           <h1 className="text-6xl text-left">
             Susurros <br /> de una Sombra
           </h1>
-
-          <button className="px-4 py-1 bg-white text-black rounded-full hover:scale-105 transition-transform text-lg flex items-center gap-2">
+          <a
+            href="https://open.spotify.com/show/6cO1hkwaPKzvqLKh5hdcEQ?si=cXL4dYHTTHmaXGRXyqBwTw"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-4 py-1 bg-white text-black rounded-full hover:scale-105 transition-transform text-lg cursor-pointer"
+          >
             <Image
-              src="/images/videoY.svg"
-              alt="Video icon"
+              src="/images/instagram-svgrepo-com.svg"
+              alt="Instagram icon"
               width={32}
               height={32}
-              className="brightness-0" // Makes the SVG black to match text
+              className="brightness-0"
             />
             Ver más
-          </button>
+          </a>
         </div>
 
         {/* Texto inferior - moved up and made single line */}
         <div className="text-white w-full mt-auto mb-28">
           <h2 className="text-3xl  mb-4 text-left">Nuestros Podcast</h2>
           <p className="text-l text-left whitespace-nowrap overflow-hidden text-ellipsis">
-           Historias reales de personas que aseguran haber tenido un encuentro cercano con la brujería. 
+            Historias reales de personas que aseguran haber tenido un encuentro cercano con la brujería.
           </p>
         </div>
       </div>
@@ -166,7 +170,7 @@ export default function PodcastPage() {
             {podcastList.map((track) => {
               const isPlaying = track.id === currentTrack.id;
               const pos = randomPositions[track.id] || { x: 0, y: 0, rotate: 0, originX: 0 };
-              
+
               return (
                 <div
                   key={track.id}
@@ -182,7 +186,7 @@ export default function PodcastPage() {
                   `}
                   style={{
                     left: `calc(50% + ${pos.originX}%)`,
-                    transform: isPlaying 
+                    transform: isPlaying
                       ? `translate(calc(-50% + ${pos.x}%), -15%) rotate(0deg) scale(1.05)` // Mantiene posición X, menos elevación Y
                       : `translate(calc(-50% + ${pos.x}%), ${pos.y}%) rotate(${pos.rotate}deg) scale(1)`,
                     transformOrigin: 'bottom center',
@@ -218,7 +222,7 @@ export default function PodcastPage() {
             })}
           </div>
         </div>
-        
+
         {/* Reproductor de Audio */}
         <div className="w-full bg-black py-4 px-4"> {/* Reducido py-8 a py-4 */}
           <div className="max-w-4xl mx-auto bg-[#c2c2c2] rounded-lg p-4 shadow-2xl">
@@ -273,10 +277,10 @@ export default function PodcastPage() {
                       setVolume(e.target.value);
                       audioRef.current.volume = e.target.value;
                     }}
-                    className="w-20" 
+                    className="w-20"
                   />
                 </div>
-                <button 
+                <button
                   onClick={() => setShowPlaylist(!showPlaylist)}
                   className="hover:opacity-70"
                 >
@@ -291,7 +295,7 @@ export default function PodcastPage() {
                 <div className="bg-[#313131] rounded-xl p-6 w-full max-w-md">
                   <div className="flex justify-between items-center mb-4">
                     <h3 className="text-white text-xl font-semibold">Lista de Reproducción</h3>
-                    <button 
+                    <button
                       onClick={() => setShowPlaylist(false)}
                       className="text-white hover:opacity-70"
                     >
