@@ -24,11 +24,17 @@ const slides = [
     image: '/images/cruz.webp',
     title: 'El otro lado \n de la Creencia'
   }
+  ,
+  {
+    id: 5,
+    image: '/images/vela.webp',
+    title: 'Entre sombras \ny Luces'
+  }
 ];
 
 export default function EpisodesSlider() {
   const [activeIndex, setActiveIndex] = useState(0);
-  
+
   const getVisibleSlides = () => {
     const prev = activeIndex === 0 ? slides.length - 1 : activeIndex - 1;
     const next = activeIndex === slides.length - 1 ? 0 : activeIndex + 1;
@@ -55,8 +61,8 @@ export default function EpisodesSlider() {
               >
                 <div className={`
                   relative overflow-hidden rounded-lg transition-all duration-700
-                  ${position === 1 
-                    ? 'w-[550px] h-[500px] opacity-100' // Reduced from 800px to 700px
+                  ${position === 1
+                    ? 'w-[500px] h-[500px] opacity-100' 
                     : 'w-[300px] h-[400px] opacity-60 hover:opacity-80 translate-y-12'} // Increased from opacity-40 to opacity-60
                 `}>
                   <Image
@@ -75,7 +81,7 @@ export default function EpisodesSlider() {
                         {slides[slideIndex].title}
                       </h3>
                       <button className="px-4 py-2 bg-white text-black rounded-full hover:scale-105 transition-transform flex items-center gap-2">
-                        <Image 
+                        <Image
                           src="/images/play.svg"
                           alt="Play icon"
                           width={24}

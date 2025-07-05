@@ -39,16 +39,21 @@ export default function DocumentalPage() {
             Entre Sombras <br /> y Luces
           </h1>
 
-          <button className="px-4 py-1 bg-white text-black rounded-full hover:scale-105 transition-transform text-lg flex items-center gap-2">
+          <a
+            href="https://www.youtube.com/@entresombrasyluces-i7t"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-4 py-1 bg-white text-black rounded-full hover:scale-105 transition-transform text-lg cursor-pointer"
+          >
             <Image
               src="/images/videoY.svg"
-              alt="Video icon"
+              alt="Instagram icon"
               width={32}
               height={32}
-              className="brightness-0" // Makes the SVG black to match text
+              className="brightness-0"
             />
             Ver más
-          </button>
+          </a>
         </div>
 
         {/* Texto inferior - moved up and made single line */}
