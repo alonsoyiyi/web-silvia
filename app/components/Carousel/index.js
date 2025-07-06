@@ -220,10 +220,19 @@ export default function Carousel({ onSlideChange }) {
                                         style={{ objectFit: 'cover' }}
                                         priority={position === 0}
                                     />
-                                    <Link
-                                        href={carouselData[itemIndex].link}
-                                        className="absolute inset-0 z-20"
-                                    />
+                                    {position === 0 ? (
+                                        // Link solo para el slide central
+                                        <Link
+                                            href={carouselData[itemIndex].link}
+                                            className="absolute inset-0 z-20"
+                                        />
+                                    ) : (
+                                        // Div clickeable para navegación en slides laterales
+                                        <div 
+                                            className="absolute inset-0 z-20 cursor-pointer"
+                                            onClick={() => position < 0 ? handlePrev() : handleNext()}
+                                        />
+                                    )}
                                 </div>
                             </motion.div>
                         );

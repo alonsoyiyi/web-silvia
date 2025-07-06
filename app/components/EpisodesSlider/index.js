@@ -7,28 +7,32 @@ const slides = [
   {
     id: 1,
     image: '/images/balanza.webp',
-    title: 'El Despertar \n de lo Invisible'
+    title: 'El Despertar \n de lo Invisible',
+    link: 'https://www.youtube.com/watch?v=SFIJZErHA6M' // Example link
   },
   {
     id: 2,
     image: '/images/preciooscuro.webp',
-    title: 'El Precio \n de lo Oscuro'
+    title: 'El Precio \n de lo Oscuro',
+    link: 'https://www.youtube.com/watch?v=Ai6IvMWskpI' // Example link
   },
   {
     id: 3,
     image: '/images/brujita.webp',
-    title: 'La Luz \n que cura'
+    title: 'La Luz \n que cura',
+    link: 'https://www.youtube.com/watch?v=-UBQqvrjTuc' // Example link
   },
   {
     id: 4,
     image: '/images/cruz.webp',
-    title: 'El otro lado \n de la Creencia'
-  }
-  ,
+    title: 'El otro lado \n de la Creencia',
+    link: 'https://www.youtube.com/watch?v=55X6O-p9ljE' // Example link
+  },
   {
     id: 5,
     image: '/images/vela.webp',
-    title: 'Entre sombras \ny Luces'
+    title: 'Entre sombras \ny Luces',
+    link: 'https://www.youtube.com/watch?v=SFIJZErHA6M' // Example link
   }
 ];
 
@@ -80,7 +84,12 @@ export default function EpisodesSlider() {
                       <h3 className="text-6xl font-bold mb-6 whitespace-pre-line text-left">
                         {slides[slideIndex].title}
                       </h3>
-                      <button className="px-4 py-2 bg-white text-black rounded-full hover:scale-105 transition-transform flex items-center gap-2">
+                      <a 
+                        href={slides[slideIndex].link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-4 py-2 bg-white text-black rounded-full hover:scale-105 transition-transform flex items-center gap-2"
+                      >
                         <Image
                           src="/images/play.svg"
                           alt="Play icon"
@@ -89,7 +98,7 @@ export default function EpisodesSlider() {
                           className="brightness-0"
                         />
                         Ver video
-                      </button>
+                      </a>
                     </div>
                   )}
                 </div>
