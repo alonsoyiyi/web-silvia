@@ -51,7 +51,7 @@ const specialists = [
     id: 8,
     name: 'Oscar Miranda',
     image: '/images/oscar.jpeg',
-    role: 'Investigador de lo oculto'
+    role: 'Psíquico'
   }
 ];
 
@@ -288,8 +288,8 @@ export default function PodcastPage() {
             className="inline-flex items-center gap-2 px-4 py-1 bg-white text-black rounded-full hover:scale-105 transition-transform text-lg cursor-pointer"
           >
             <Image
-              src="/images/instagram-svgrepo-com.svg"
-              alt="Instagram icon"
+              src="/images/videoY.svg"
+              alt="Youtube icon"
               width={32}
               height={32}
               className="brightness-0"
@@ -330,14 +330,14 @@ export default function PodcastPage() {
           {/* Primer div */}
           <div className="flex items-center gap-8 mb-16">
             <div className="w-[40%] flex flex-col items-center">
-              <div className="relative w-[80%] aspect-square rounded-xl overflow-hidden">
+              <Link href="/blog" className="relative w-[80%] aspect-square rounded-xl overflow-hidden hover:scale-105 transition-transform">
                 <Image
                   src="/images/blog.png"
                   alt="Podcast"
                   fill
                   className="object-cover"
                 />
-              </div>
+              </Link>
               <h3 className="text-2xl font-semibold text-white mt-4">Entre el Miedo y la Fe</h3>
             </div>
             <p className="w-[60%] text-lg text-white/80 text-justify">
@@ -348,14 +348,14 @@ export default function PodcastPage() {
           {/* Segundo div */}
           <div className="flex flex-row-reverse items-center gap-8 mb-16">
             <div className="w-[40%] flex flex-col items-center">
-              <div className="relative w-[80%] aspect-square rounded-xl overflow-hidden">
+              <Link href="/documental" className="relative w-[80%] aspect-square rounded-xl overflow-hidden hover:scale-105 transition-transform">
                 <Image
                   src="/images/documental.png"
                   alt="Documental"
                   fill
                   className="object-cover"
                 />
-              </div>
+              </Link>
               <h3 className="text-2xl font-semibold text-white mt-4">Entre Sombras y Luces</h3>
             </div>
             <p className="w-[60%] text-lg text-white/80 text-justify">
@@ -366,14 +366,14 @@ export default function PodcastPage() {
           {/* Tercer div */}
           <div className="flex items-center gap-8 mb-16">
             <div className="w-[40%] flex flex-col items-center">
-              <div className="relative w-[80%] aspect-square rounded-xl overflow-hidden">
+              <Link href="/podcast" className="relative w-[80%] aspect-square rounded-xl overflow-hidden hover:scale-105 transition-transform">
                 <Image
                   src="/images/podcast.png"
                   alt="Fotolibro"
                   fill
                   className="object-cover"
                 />
-              </div>
+              </Link>
               <h3 className="text-2xl font-semibold text-white mt-4">Susurros de una Sombra</h3>
             </div>
             <p className="w-[60%] text-lg text-white/80 text-justify">
@@ -384,14 +384,14 @@ export default function PodcastPage() {
           {/* Cuarto div */}
           <div className="flex flex-row-reverse items-center gap-8 mb-16">
             <div className="w-[40%] flex flex-col items-center">
-              <div className="relative w-[80%] aspect-square rounded-xl overflow-hidden">
+              <Link href="/comic" className="relative w-[80%] aspect-square rounded-xl overflow-hidden hover:scale-105 transition-transform">
                 <Image
                   src="/images/comic.png"
                   alt="Website"
                   fill
                   className="object-cover"
                 />
-              </div>
+              </Link>
               <h3 className="text-2xl font-semibold text-white mt-4">El útimo Conjuro</h3>
             </div>
             <p className="w-[60%] text-lg text-white/80 text-justify">
@@ -402,14 +402,14 @@ export default function PodcastPage() {
           {/* Quinto div */}
           <div className="flex items-center gap-8">
             <div className="w-[40%] flex flex-col items-center">
-              <div className="relative w-[80%] aspect-square rounded-xl overflow-hidden">
+              <Link href="/videojuego" className="relative w-[80%] aspect-square rounded-xl overflow-hidden hover:scale-105 transition-transform">
                 <Image
                   src="/images/videojuego.png"
                   alt="Redes Sociales"
                   fill
                   className="object-cover"
                 />
-              </div>
+              </Link>
               <h3 className="text-2xl font-semibold text-white mt-4">Bruji Aventuras</h3>
             </div>
             <p className="w-[60%] text-lg text-white/80 text-justify">

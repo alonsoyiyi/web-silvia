@@ -279,15 +279,25 @@ export default function View7() {
 </div>
 				</div>
 
-				<div className="w-1/2 relative flex items-center justify-center">
-					<div className="relative w-[80%] aspect-square"> {/* Reduced from 100% to 70% */}
-						<Image
-							src="/images/logo_grande.webp"
-							alt="Logo Productora"
-							fill
-							className="object-contain"
-						/>
-					</div>
+				<div className="w-1/2 relative flex items-center justify-center -mt-8">
+					<div className="relative w-[80%] flex flex-col gap-12">
+        <div className="relative w-full h-[350px]"> {/* Changed from aspect-square to fixed height */}
+            <Image
+                src="/images/logo_grande1.webp"
+                alt="Logo Productora Parte Superior"
+                fill
+                className="object-contain object-bottom"
+            />
+        </div>
+        <div className="relative w-full h-[200px] -mt-10">
+            <Image
+                src="/images/logo_grande2.webp"
+                alt="Logo Productora Parte Inferior"
+                fill
+                className="object-contain object-top"
+            />
+        </div>
+    </div>
 				</div>
 			</div>
 

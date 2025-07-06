@@ -37,30 +37,34 @@ export default function DocumentalPage() {
           <h1 className="text-6xl text-left">
             Bruji <br /> Aventuras
           </h1>
-
-          <button className="px-4 py-1 bg-white text-black rounded-full hover:scale-105 transition-transform text-lg flex items-center gap-2">
+          <a
+            href="https://brujiaventuras-j6jg.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-4 py-1 bg-white text-black rounded-full hover:scale-105 transition-transform text-lg cursor-pointer"
+          >
             <Image
-              src="/images/videoY.svg"
-              alt="Video icon"
+              src="/images/videogame.svg"
+              alt="game icon"
               width={32}
               height={32}
-              className="brightness-0" // Makes the SVG black to match text
+              className="brightness-0"
             />
             Ver más
-          </button>
+          </a>
         </div>
 
         {/* Texto inferior - moved up and made single line */}
         <div className="text-white w-full mt-auto mb-28">
           <h2 className="text-3xl  mb-4 text-left">Nuestro Videojuego</h2>
           <p className="text-l text-left whitespace-nowrap overflow-hidden text-ellipsis">
-           Juego interactivo donde tus decisiones mágicas llevan al éxito o a divertidas sorpresas.
+            Juego interactivo donde tus decisiones mágicas llevan al éxito o a divertidas sorpresas.
           </p>
         </div>
       </div>
 
       {/* Nueva sección - Imagen del juego */}
-      <div 
+      <div
         className="w-full bg-black -mt-28"
         style={{
           backgroundImage: "url('/images/fondojuegob.webp')",
@@ -70,7 +74,7 @@ export default function DocumentalPage() {
         }}
       >
         <div className="max-w-7xl mx-auto px-8">
-          <Link 
+          <Link
             href="https://brujiaventuras-j6jg.vercel.app/"
             className="block relative h-[600px] w-full hover:scale-105 transition-all duration-500"
           >
