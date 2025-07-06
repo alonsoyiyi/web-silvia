@@ -35,7 +35,7 @@ export default function ComicPage() {
         {/* Contenido central */}
         <div className="flex flex-col items-start gap-8 text-white mb-60">
           <h1 className="text-6xl text-left">
-            Comic <br /> Interactivo
+            El último <br /> Conjuro
           </h1>
 <a
             href="https://www.webtoons.com/en/canvas/el-%C3%BAltimo-conjuro-/list?title_no=1062892"
@@ -71,7 +71,7 @@ export default function ComicPage() {
                 <Link href="https://www.webtoons.com/en/canvas/el-%C3%BAltimo-conjuro-/capitulo-1-/viewer?title_no=1062892&episode_no=1" className="relative block group">
                   <div className="relative w-[300px] h-[400px] transition-all duration-500 group-hover:scale-105">
                     <Image
-                      src="/images/section5.png"
+                      src="/images/comic-cards.webp"
                       alt="Capítulo 1"
                       fill
                       className="object-cover rounded-lg transition-all duration-500 group-hover:brightness-100 brightness-75"
@@ -88,7 +88,7 @@ export default function ComicPage() {
                 <Link href="https://www.webtoons.com/en/canvas/el-%C3%BAltimo-conjuro-/capitulo-2/viewer?title_no=1062892&episode_no=2" className="relative block group">
                   <div className="relative w-[300px] h-[400px] transition-all duration-500 group-hover:scale-105">
                     <Image
-                      src="/images/section5.png"
+                      src="/images/comic-cards.webp"
                       alt="Capítulo 2"
                       fill
                       className="object-cover rounded-lg transition-all duration-500 group-hover:brightness-100 brightness-75"
@@ -105,7 +105,7 @@ export default function ComicPage() {
                 <Link href="https://www.webtoons.com/en/canvas/el-%C3%BAltimo-conjuro-/capitulo-3/viewer?title_no=1062892&episode_no=3" className="relative block group">
                   <div className="relative w-[300px] h-[400px] transition-all duration-500 group-hover:scale-105">
                     <Image
-                      src="/images/section5.png"
+                      src="/images/comic-cards.webp"
                       alt="Capítulo 3"
                       fill
                       className="object-cover rounded-lg transition-all duration-500 group-hover:brightness-100 brightness-75"

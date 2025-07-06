@@ -46,8 +46,8 @@ export default function DocumentalPage() {
             className="px-4 py-1 bg-white text-black rounded-full hover:scale-105 transition-transform text-lg flex items-center gap-2"
           >
             <Image
-              src="/images/videoY.svg"
-              alt="Video icon"
+              src="/images/x-social.svg"
+              alt="X icon"
               width={32}
               height={32}
               className="brightness-0"
