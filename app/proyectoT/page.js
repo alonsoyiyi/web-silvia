@@ -190,7 +190,12 @@ const Carousel = () => {
                   position: 'absolute',
                   width: position === 0 ? '300px' : '250px',
                   height: position === 0 ? '400px' : '350px',
-                  transformOrigin: 'center center'
+                  transformOrigin: 'center center',
+                  cursor: position !== 0 ? 'pointer' : 'default'
+                }}
+                onClick={() => {
+                  if (position === -1) handlePrev();
+                  if (position === 1) handleNext();
                 }}
                 initial="enter"
                 animate="center"
