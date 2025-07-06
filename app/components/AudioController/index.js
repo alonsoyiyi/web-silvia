@@ -11,7 +11,7 @@ export default function AudioController() {
     // Crear el elemento de audio cuando el componente se monte
     const audioElement = new Audio('/audio/faraway.mp3');
     audioElement.loop = true;
-    audioElement.volume = 0.2; // Añadido: establece el volumen al 50%
+    audioElement.volume = 0.2; // Añadido: establece el volumen
     setAudio(audioElement);
 
     // Cleanup cuando el componente se desmonte

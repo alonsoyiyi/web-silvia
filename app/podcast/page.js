@@ -11,42 +11,46 @@ const podcastList = [
     id: 1,
     title: "Fe y Escepticismo",
     author: "Susurros de una Sombra",
-    duration: "04:09",
+    duration: "04:08",
     image: "/images/cuyhuevo.webp",
-    audioSrc: "/audios/fe-escepticismo.mp3"
+    audioSrc: "/audios/fe-escepticismo.mp3",
+    link: "https://open.spotify.com/episode/5fUOTiR1UmLVJRyw5RuoEI?si=b1lWECRhRL2rjsuDHTC6IA" // Example link
   },
   {
     id: 2,
     title: "El amuleto de los lamentos",
     author: "Susurros de una Sombra",
-    duration: "28:15",
-    image: "/images/cuyhuevo.webp",
-    audioSrc: "/audios/fe-escepticismo.mp3"
+    duration: "04:57",
+    image: "/images/amuleto-lamentos.webp",
+    audioSrc: "/audios/amuleto-lamentos.mp3",
+    link: "https://open.spotify.com/episode/1cQWNQ5dJuu2b7hBFrCHdU?si=bfzts3hSSuKCvc4O0ITX_A" // Example link     
   },
   {
     id: 3,
     title: "La voz de la quebrada",
     author: "Susurros de una Sombra",
-    duration: "28:15",
-    image: "/images/cuyhuevo.webp",
-    audioSrc: "/audios/fe-escepticismo.mp3"
+    duration: "06:51",
+    image: "/images/voz-quebrada.webp",
+    audioSrc: "/audios/voz-quebrada.mp3",
+    link: "https://open.spotify.com/episode/4ZmwYSu0bScytnV9Rz3Rpf?si=eA6zIr9NQfuuDzXm_TIDzg" // Example link
   },
   {
     id: 4,
     title: "El Juego del Péndulo",
     author: "Susurros de una Sombra",
-    duration: "28:15",
-    image: "/images/cuyhuevo.webp",
-    audioSrc: "/audios/fe-escepticismo.mp3"
-  }
-  ,
+    duration: "05:12",
+    image: "/images/juego-pendulo.webp",
+    audioSrc: "/audios/juego-pendulo.mp3",
+    link: "https://open.spotify.com/episode/3hzrKRMz6Zi06gnjuMximd?si=gkgCKj7EQw-LLlUNz3pvXQ" // Example link
+  },
   {
     id: 5,
     title: "El daño Invisible",
     author: "Susurros de una Sombra",
-    duration: "28:15",
-    image: "/images/cuyhuevo.webp",
-    audioSrc: "/audios/fe-escepticismo.mp3"
+    duration: "05:02",
+    image: "/images/dano-invisible.webp",
+    audioSrc: "/audios/dano-invisible.mp3",
+    link: "https://open.spotify.com/episode/5fRieQbooW03nkW9Jzzd8q?si=YVrGuM7nRJCImIH7ydX4WA" // Example link
   }
 ];
 
@@ -144,8 +148,8 @@ export default function PodcastPage() {
             className="inline-flex items-center gap-2 px-4 py-1 bg-white text-black rounded-full hover:scale-105 transition-transform text-lg cursor-pointer"
           >
             <Image
-              src="/images/instagram-svgrepo-com.svg"
-              alt="Instagram icon"
+              src="/images/spotify-svg.svg"
+              alt="spotify icon"
               width={32}
               height={32}
               className="brightness-0"
@@ -213,7 +217,15 @@ export default function PodcastPage() {
                     {isPlaying && (
                       <div className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center text-white">
                         <h3 className="text-xl font-bold mb-2">{track.title}</h3>
-                        <p className="text-sm opacity-75">{track.author}</p>
+                        <p className="text-sm opacity-75 mb-4">{track.author}</p>
+                        <a
+                          href={track.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="px-4 py-2 bg-white text-black rounded-full hover:scale-105 transition-transform text-sm"
+                        >
+                          Abrir en Spotify
+                        </a>
                       </div>
                     )}
                   </div>
