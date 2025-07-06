@@ -18,7 +18,7 @@ export default function DocumentalPage() {
         {/* Botón volver - moved up */}
         <div className="w-full -mt-4">
           <Link
-            href="/"
+            href="/#slider-section"
             className="px-6 py-2 bg-black text-white font-semibold rounded-full hover:scale-105 transition-transform inline-flex items-center gap-2"
           >
             <Image
@@ -26,7 +26,7 @@ export default function DocumentalPage() {
               alt="Volver icon"
               width={32}
               height={32}
-              className="brightness-0 invert" // Makes the SVG white to match text
+              className="brightness-0 invert"
             />
             Volver
           </Link>

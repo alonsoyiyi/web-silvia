@@ -153,9 +153,11 @@ export default function Home() {
         </h2>
         
         {/* Contenido del carrusel */}
-        <section className="slider-section w-full max-w-7xl mx-auto relative z-10">
-          <Carousel onSlideChange={setCurrentBgImage} />
-        </section>
+        <div id="slider-section">
+          <section className="slider-section w-full max-w-7xl mx-auto relative z-10">
+            <Carousel onSlideChange={setCurrentBgImage} />
+          </section>
+        </div>
       </div>
     </main>
   );

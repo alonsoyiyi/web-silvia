@@ -16,9 +16,9 @@ export default function ComicPage() {
       {/* Contenedor principal con padding ajustado */}
       <div className="w-full flex flex-col px-20 pt-12 pb-12"> {/* Aumentado pt-8 a pt-12 */}
         {/* Botón volver */}
-        <div className="w-full mb-12">
+        <div className="w-full -mt-4">
           <Link
-            href="/"
+            href="/#slider-section"
             className="px-6 py-2 bg-black text-white font-semibold rounded-full hover:scale-105 transition-transform inline-flex items-center gap-2"
           >
             <Image
@@ -67,8 +67,13 @@ export default function ComicPage() {
           <div className="max-w-7xl mx-auto">
             <div className="relative h-[400px] flex items-center justify-center">
               {/* Capítulo 1 */}
-              <div className="absolute transform -translate-x-[100%] -rotate-6"> {/* Cambiado de -60% a -80% */}
-                <Link href="https://www.webtoons.com/en/canvas/el-%C3%BAltimo-conjuro-/capitulo-1-/viewer?title_no=1062892&episode_no=1" className="relative block group">
+              <div className="absolute transform -translate-x-[100%] -rotate-6">
+                <Link 
+                  href="https://www.webtoons.com/en/canvas/el-%C3%BAltimo-conjuro-/capitulo-1-/viewer?title_no=1062892&episode_no=1" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative block group"
+                >
                   <div className="relative w-[300px] h-[400px] transition-all duration-500 group-hover:scale-105">
                     <Image
                       src="/images/comic-cards.webp"
@@ -85,7 +90,12 @@ export default function ComicPage() {
 
               {/* Capítulo 2 (Central) */}
               <div className="relative z-10">
-                <Link href="https://www.webtoons.com/en/canvas/el-%C3%BAltimo-conjuro-/capitulo-2/viewer?title_no=1062892&episode_no=2" className="relative block group">
+                <Link 
+                  href="https://www.webtoons.com/en/canvas/el-%C3%BAltimo-conjuro-/capitulo-2/viewer?title_no=1062892&episode_no=2" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative block group"
+                >
                   <div className="relative w-[300px] h-[400px] transition-all duration-500 group-hover:scale-105">
                     <Image
                       src="/images/comic-cards.webp"
@@ -101,8 +111,13 @@ export default function ComicPage() {
               </div>
 
               {/* Capítulo 3 */}
-              <div className="absolute transform translate-x-[100%] rotate-6"> {/* Cambiado de 60% a 80% */}
-                <Link href="https://www.webtoons.com/en/canvas/el-%C3%BAltimo-conjuro-/capitulo-3/viewer?title_no=1062892&episode_no=3" className="relative block group">
+              <div className="absolute transform translate-x-[100%] rotate-6">
+                <Link 
+                  href="https://www.webtoons.com/en/canvas/el-%C3%BAltimo-conjuro-/capitulo-3/viewer?title_no=1062892&episode_no=3" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative block group"
+                >
                   <div className="relative w-[300px] h-[400px] transition-all duration-500 group-hover:scale-105">
                     <Image
                       src="/images/comic-cards.webp"
